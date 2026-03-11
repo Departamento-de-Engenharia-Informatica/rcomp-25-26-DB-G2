@@ -1,9 +1,14 @@
 RCOMP 2025-2026 Project 1 - Sprint 1 review
 =========================================
-### Sprint master: 1111111 ###
+### Sprint master: 1222215 ###
 (This file is to be created/edited by the sprint master only)
 # 1. Sprint's backlog #
-(Copy here a summary of the provided sprint's backlog, the same text as for the Planning Meeting)
+| Tasks | Task Description                                                                |
+|-------|---------------------------------------------------------------------------------|
+| T.1.1 | Development of a structured cabling project for Terminal 2 encompassed floors, including the campus backbone. |
+| T.1.2 | Development of a structured cabling project for Terminal 3 encompassed floors.  |
+| T.1.3 | Development of a structured cabling project for Terminal 5 encompassed floors.  |
+| T.1.4 | Development of a structured cabling project for Terminal 4 encompassed floors.  |
 # 2. Subtasks assessment #
 One by one, each team member presents his/her outcomes to the team, the team assesses 		the accomplishment of the subtask backlog.
 The subtask backlog accomplishment can be assessed as one of:
