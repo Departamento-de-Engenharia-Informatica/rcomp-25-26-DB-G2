@@ -7,7 +7,7 @@
 | Wi‑Fi access points                       |      12       |
 | RJ45 ports for APs                        |      13       |
 | CAT7 horizontal cables                    |      868      |
-| Total CAT7 horizontal length (approx.)    |    ~4,5km     |
+| Total CAT7 horizontal length (approx.)    |    ~23,4km    |
 | Fibre pairs HC2 (L2) ↔ IC/HC0 (L0)        | counted above |
 | Copper patch panels at HC2                |       4       |
 | Telecommunications enclosure Room 3 (HC2) |    1 × 12U    |
