@@ -2,9 +2,7 @@ RCOMP 2025-2026 Project 1 - Sprint 1 - Member 1240751 folder
 ===========================================
 (This folder is to be created/edited by the team member 1240751 only)
 
-This document describes the **structured cabling project for Terminal 4**, focused on the
-two floors assigned in the sprint backlog: **Level 0 (Arrivals)** and **Level 2 (Departures)**.
-All work in this folder corresponds to the task **T.1.4 – Terminal 4**.
+This document describes the **structured cabling project for Terminal 4**, focused on the floor 0 assigned in the sprint backlog: **Level 0 (Arrivals)**.
 
 
 ## 1. Physical environment – Terminal 4
@@ -14,9 +12,7 @@ All work in this folder corresponds to the task **T.1.4 – Terminal 4**.
   - **Level 0 (Arrivals)** – plan with rooms 1 to 16, an underfloor cable raceway and a
     vertical cable passageway in Room 4 that connects to the underground technical
     passageway.
-  - **Level 2 (Departures)** – plan with rooms 1 to 21, an underfloor cable raceway along
-    the external walls and the same vertical cable passageway in Room 4, connecting to
-    the underground technical passageway.
+ 
 - **Ceilings**: both levels have a ceiling at 5 m and a dropped (false) ceiling at 4 m,
   creating an empty space suitable for cable trays and wireless access points.
 
@@ -25,7 +21,7 @@ All work in this folder corresponds to the task **T.1.4 – Terminal 4**.
 
 ### 2.1 Level 0 measurements
 
-<img src="1240751\measurements_floor0.png">
+<img src="measurements_floor0.png">
 
 Figure 1 - Level 0 measurements (Terminal 4 – Arrivals)
 
