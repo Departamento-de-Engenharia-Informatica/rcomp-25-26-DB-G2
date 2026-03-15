@@ -20,7 +20,7 @@ Level 2. All work in this folder corresponds to the task **T.1.4 – Terminal 4*
 
 ### 2.1 Level 2 measurements
 
-<img src="finalsketch_level2.png">
+<img src="measurements_floor2.png">
 
 Figure 1 - Level 2 measurements and outlet layout (Terminal 4 – Departures)
 
