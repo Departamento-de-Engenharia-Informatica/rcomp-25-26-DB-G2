@@ -7,7 +7,7 @@
 | Wi‑Fi access points                          |    12    |
 | RJ45 ports for APs                           |    12    |
 | CAT7 horizontal cables                       |   677    |
-| Total CAT7 horizontal length (approx.)       | ~3,2 km  |
+| Total CAT7 horizontal length (approx.)       | ~12,8km  |
 | Fibre pairs IC ↔ campus backbone             |    2     |
 | Fibre pairs IC/HC0 (L0) ↔ HC2 (L2)           |    2     |
 | Copper/fibre patch panels at IC              |    2     |
