@@ -92,7 +92,7 @@ for every 10 m² of area.*
 - At each **floor cable passageway** the cables can:
   - rise directly into the room and up inside the wall to reach wall‑mounted outlets, or
   - rise to the false ceiling, follow ceiling trays above the rooms and then drop down to
-    wall outlets, columns or floor boxes in open areas or between doors.
+    wall outlets.
 
 ### 3.4 Outlets grouping and distribution
 
@@ -104,9 +104,6 @@ for every 10 m² of area.*
     expected.
   - In large rooms (for example Rooms 1, 2, 3 and 14) the clusters cover all walls in order
     to provide flexibility for desks and counters anywhere along the perimeter.
-  - In open corners or between doors where there is no continuous wall, clusters are
-    implemented as **floor boxes or ceiling‑drop poles**, still fed from the underfloor
-    raceway.
 
 
 ## 4. Wireless LAN – Level 0 (Arrivals)
@@ -123,7 +120,6 @@ for every 10 m² of area.*
 - Cables for the APs follow the same pattern as outlets: HC0 → underfloor raceway →
   floor passageway → false ceiling → AP.
 - RF interference is controlled by assigning different **non‑overlapping channels** to
-  neighbouring and vertically adjacent APs (channels 1/6/11 at 2.4 GHz and distinct
-  channels at 5 GHz).
+  neighbouring and vertically adjacent APs.
 
 
