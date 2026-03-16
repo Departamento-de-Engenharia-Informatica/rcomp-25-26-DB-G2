@@ -72,11 +72,11 @@ for every 10 m² of area.*
   - Copper CAT7 patch panels terminate all horizontal cables from the outlets and Wi‑Fi
     access points on Level 2.
   - HC2 is housed in a telecommunications enclosure in Room 3.
-  - HC2 is connected to the IC/HC0 rack in Room 4 Level 0 by multimode optical fibre along
+  - HC2 is connected to the IC/HC0 rack in Room 4 Level 0 by **Monomode 10** optical fibre along
     the vertical passageway.
 
 ### 3.2 Cable types
 
 - **Horizontal cabling**: copper **CAT7** cables, maximum 90 m per link between HC2 and
   each outlet or access point.
-- **Backbone cabling**: multimode optical fibre between:
+- **Backbone cabling**: **Monomode 10** optical fibre between:

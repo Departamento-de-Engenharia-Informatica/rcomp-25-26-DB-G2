@@ -75,7 +75,7 @@ for every 10 m² of area.*
 
 - **Horizontal cabling**: copper **CAT7** cables, maximum 90 m per link between HC0 and
   each outlet or access point.
-- **Backbone cabling**: multimode optical fibre between:
+- **Backbone cabling**: **Monomode 10** optical fibre between:
   - IC in Room 4 and the campus backbone (via underground technical passageway).
   - IC/HC0 in Room 4 and the **Horizontal Cross‑Connect on Level 2 (HC2)**.
 
