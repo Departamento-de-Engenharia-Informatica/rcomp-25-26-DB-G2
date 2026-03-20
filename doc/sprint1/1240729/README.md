@@ -29,35 +29,22 @@ RCOMP 2025-2026 Project 1 - Sprint 1 - Member 1240729 folder
 
 > **Note on Calculations:** Outlet counts are calculated based on 2 outlets per 10m² and rounded up to the nearest whole unit. 
 
-
-### Cabling System
-- The cables used inside the floor are, as reccomended, copper cables CAT7, with only a Monomode 10 cable being used to connect the Intermediate Cross-Connect to the Horizontal Cross-Connect and this one to the floor above.
-- Horizontal Cross-Connect (HC) are distributed in some rooms(1,13,20) and in some walls to to prevent it from exceeding the maximum length of the copper wire.(<=90m)
-- The HC connects directly to all the Consolidation Points 
-- CAT7 cables were chosen for Terminal 3 because they provide high-speed 10 Gbps transmission, excellent shielding against interference, support distances up to 100 m, and ensure compatibility and scalability for future network upgrades.
-
-
-### Access Points
-
-- The Access Points are strategically placed in the celling, providing optimal coverage for all the area of the level.
-
-# Hardware Inventory
+# Level 1 - Hardware Inventory
 
 | Item                             | Units used |
 |:---------------------------------|:----------:|
 | Outlets                          |     642    |
 | CAT7 Cables                      |     658    |
-| Monomode 10                      |     3      |
+| Multimode 10                     |     1      |
 | 24-port Patch Panels  (ISO 8877) |     1      |
 | 48-port Patch Panels  (ISO 8877) |     31     |
 | Access Points                    |     16     |
-| IC (Intermediate Cross-Connect)  |     3      |
-| HC (Horizontal Cross-Connect)    |     9      |
-| Telecommunication Enclosures     |     3      |
+| IC (Intermediate Cross-Connect)  |     1      |
+| HC (Horizontal Cross-Connect)    |     11     |
+| Telecommunication Enclosures     |     12     |
 
 ### Notes: 
-
-- There is 1 HC with a 24-port Patch Panel only.
+- 
 
 ## Telecommunication Enclosure Sizes
 
@@ -84,17 +71,19 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 
 
 
-## Cable Lengths-Level 1
+## Level 1 - Cable Lengths
 
-|  Level  | CAT7 copper cable | Monomode 10 optic fiber cable |
+|  Level  | CAT7 copper cable | Multimode 10 optic fiber cable |
 |:-------:|:-----------------:|:-----------------------------:|
-|    1    |       5000m       |              6 m              |
+|    1    |       5000m       |              1 m              |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
 - The total quantity is rounded in excess, to ensure that there is enough cable to cover the entire building.
 
 ---
+
+
 
 ## Description of level 2 
 - Level 2 is 200x200m and consists of 20 rooms.
@@ -125,37 +114,24 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 > **Note on Calculations:** Outlet counts are calculated based on 2 outlets per 10m² and rounded up to the nearest whole unit. 
 
 ---
-### Cabling System
 
-- The cables used inside the floor are, as reccomended, copper cables CAT7, with only a Monomode 10 cable being used to connect the Intermediate Cross-Connect to the Horizontal Cross-Connect and this one to the floor above.
-- Horizontal Cross-Connect (HC) are distributed in some rooms(1,13,20) and in some walls to to prevent it from exceeding the maximum length of the copper wire.(<=90m)
-- The HC connects directly to all the Consolidation Points
-- CAT7 cables were chosen for Terminal 3 because they provide high-speed 10 Gbps transmission, excellent shielding against interference, support distances up to 100 m, and ensure compatibility and scalability for future network upgrades. 
-
-
-### Access Points
-
-- The Access Points are strategically placed in the celling, providing optimal coverage for all the area of the level.
-
-
-
-# Hardware Inventory
+# Level 2 - Hardware Inventory
 
 | Item                             | Units used |
 |:---------------------------------|:----------:|
 | Outlets                          |     1047   |
 | CAT7 Cables                      |     1063   |
-| Monomode 10                      |     3      |
+| Multimode 10                     |     1      |
 | 24-port Patch Panels  (ISO 8877) |     6      |
 | 48-port Patch Panels  (ISO 8877) |     24     |
 | Access Points                    |     16     |
-| IC (Intermediate Cross-Connect)  |     3      |
-| HC (Horizontal Cross-Connect)    |     11     |
-| Telecommunication Enclosures     |     3      |
+| IC (Intermediate Cross-Connect)  |     1      |
+| HC (Horizontal Cross-Connect)    |     12     |
+| Telecommunication Enclosures     |     13     |
 
 ### Notes: 
 
-- There is 1 HC with a 24-port Patch Panel only.
+- T.
 
 ## Telecommunication Enclosure Sizes
 
@@ -181,25 +157,55 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 
 
 
-## Cable Lengths-Level 1
-
-|  Level  | CAT7 copper cable | Monomode 10 optic fiber cable |
+## Level 2 - Cable Lengths
+|  Leve2  | CAT7 copper cable | Multimode 10 optic fiber cable |
 |:-------:|:-----------------:|:-----------------------------:|
-|    1    |      7000 m       |              2 m             |
+|    1    |      7000 m       |              1 m             |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
 - The total quantity is rounded in excess, to ensure that there is enough cable to cover the entire building. 
 
---- 
+---
+
+
+### Cabling System
+- The cabling follows a hierarchical star topology, with each floor’s IC acting as a central node connecting to horizontal cross-connects.
+- The cables used inside the floor are copper cables CAT7 and a Multimode 10 cable being used to connect the Intermediate Cross-Connect(IC) to the Horizontal Cross-Connect and a Monomode 10 cable to connect the IC of this floor to the IC of the floor above.
+- Multimode fibers were chosen for connections within the same floor due to cost efficiency and sufficient distance coverage, while monomode fibers were used for inter-floor connections to minimize attenuation over longer distances.
+- Horizontal Cross-Connects (HCs) are strategically positioned to serve the outlets in the rooms and along the exterior walls, ensuring that the maximum length of copper cabling does not exceed 90 meters.
+- CAT7 cables were chosen because they provide high-speed 10 Gbps transmission, excellent shielding against interference, support distances up to 100 m, and ensure compatibility and scalability for future network upgrades.
+- Within the telecommunications enclosures, patch panels are used to terminate the horizontal cabling and are selected to match the type of cabling used. Patch cords are then employed to interconnect the patch panels with active network equipment, such as switches, ensuring flexibility, ease of management, and simplified reconfiguration of network connections.
+
+
+### Access Points
+- The Access Points (APs) are strategically installed in the ceiling to provide optimal coverage throughout the entire floor. Each AP offers approximately a 50-meter diameter coverage area, which is why 16 units are evenly distributed across the ceiling to ensure full floor coverage (200 × 200 / 50² ≈ 16).
+- Ceiling outlets installed in the space above the false ceiling.
+
 
 ## Total Cable Lengths
 
-|   Terminal | CAT7 copper cable | Monomode 10 optic fiber cable |
-|:----------:|:-----------------:|:-----------------------------:|
-|    3       |      120000 m     |             24m               |
+| Terminal | CAT7 copper cable | Monomode 10 optic fiber cable | Multimode 10 optic fiber cable |
+|:--------:|:-----------------:|:-----------------------------:|:------------------------------:|
+|    3     |      120000 m     |             16m               |             2m                  |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
 - The total quantity is rounded in excess, to ensure that there is enough cable to cover the entire building.
-- the distance in between the two floors is 16m, therefore 16m are part of the total sum of the monomode 10 optic fiber cable
+- the distance in between the two floors is 16m, therefore 16m are the monomode final cable lenght. 
+
+
+## Total Hardware Inventory
+
+| Item                             | Units used |
+|:---------------------------------|:----------:|
+| Outlets                          |     1689   |
+| CAT7 Cables                      |     1721   |
+| Multimode 10                     |     2      |
+| Monomode 10                      |     1      |
+| 24-port Patch Panels  (ISO 8877) |     7      |
+| 48-port Patch Panels  (ISO 8877) |     55     |
+| Access Points                    |     32     |
+| IC (Intermediate Cross-Connect)  |     2      |
+| HC (Horizontal Cross-Connect)    |     23     |
+| Telecommunication Enclosures     |     25     |
