@@ -35,16 +35,13 @@ RCOMP 2025-2026 Project 1 - Sprint 1 - Member 1240729 folder
 |:---------------------------------|:----------:|
 | Outlets                          |     642    |
 | CAT7 Cables                      |     658    |
-| Multimode 10                     |     1      |
+| Multimode 10                     |     11     |
 | 24-port Patch Panels  (ISO 8877) |     1      |
 | 48-port Patch Panels  (ISO 8877) |     31     |
 | Access Points                    |     16     |
 | IC (Intermediate Cross-Connect)  |     1      |
-| HC (Horizontal Cross-Connect)    |     11     |
+| HC (Horizontal Cross-Connect)    |     10     |
 | Telecommunication Enclosures     |     12     |
-
-### Notes: 
-- 
 
 ## Telecommunication Enclosure Sizes
 
@@ -67,22 +64,19 @@ Required rack space = 4 × S
 Required rack space = 4 × 67U
 Required rack space = 268U
 
-Considering that standard racks are commonly available with 48U, the infrastructure requires 6 telecommunications racks (48U each).
-
 
 
 ## Level 1 - Cable Lengths
 
-|  Level  | CAT7 copper cable | Multimode 10 optic fiber cable |
+|  Level  | CAT7 copper cable | Multimode optic fiber cable |
 |:-------:|:-----------------:|:-----------------------------:|
-|    1    |       5000m       |              1 m              |
+|    1    |       5000m       |               2562m              |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
 - The total quantity is rounded in excess, to ensure that there is enough cable to cover the entire building.
 
 ---
-
 
 
 ## Description of level 2 
@@ -121,17 +115,13 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 |:---------------------------------|:----------:|
 | Outlets                          |     1047   |
 | CAT7 Cables                      |     1063   |
-| Multimode 10                     |     1      |
+| Multimode 10                     |     10     |
 | 24-port Patch Panels  (ISO 8877) |     6      |
 | 48-port Patch Panels  (ISO 8877) |     24     |
 | Access Points                    |     16     |
-| IC (Intermediate Cross-Connect)  |     1      |
-| HC (Horizontal Cross-Connect)    |     12     |
-| Telecommunication Enclosures     |     13     |
-
-### Notes: 
-
-- T.
+| IC (Intermediate Cross-Connect)  |     0      |
+| HC (Horizontal Cross-Connect)    |     10     |
+| Telecommunication Enclosures     |     12     |
 
 ## Telecommunication Enclosure Sizes
 
@@ -153,14 +143,12 @@ Required rack space = 4 × S
 Required rack space = 4 × 108U
 Required rack space = 432U
 
-Considering that standard racks are commonly available with 48U, the infrastructure requires 9 telecommunications racks (48U each).
-
 
 
 ## Level 2 - Cable Lengths
 |  Leve2  | CAT7 copper cable | Multimode 10 optic fiber cable |
-|:-------:|:-----------------:|:-----------------------------:|
-|    1    |      7000 m       |              1 m             |
+|:-------:|:-----------------:|:------------------------------:|
+|    1    |      7000 m       |              2090m                |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
@@ -170,11 +158,10 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 
 
 ### Cabling System
-- The cabling follows a hierarchical star topology, with each floor’s IC acting as a central node connecting to horizontal cross-connects.
-- The cables used inside the floor are copper cables CAT7 and a Multimode 10 cable being used to connect the Intermediate Cross-Connect(IC) to the Horizontal Cross-Connect and a Monomode 10 cable to connect the IC of this floor to the IC of the floor above.
+- The cables used inside the floor are copper cables CAT7 and a Multimode optic fibre cable being used to connect the Intermediate Cross-Connect(IC) to the Horizontal Cross-Connect.
 - Multimode fibers were chosen for connections within the same floor due to cost efficiency and sufficient distance coverage, while monomode fibers were used for inter-floor connections to minimize attenuation over longer distances.
 - Horizontal Cross-Connects (HCs) are strategically positioned to serve the outlets in the rooms and along the exterior walls, ensuring that the maximum length of copper cabling does not exceed 90 meters.
-- CAT7 cables were chosen because they provide high-speed 10 Gbps transmission, excellent shielding against interference, support distances up to 100 m, and ensure compatibility and scalability for future network upgrades.
+- CAT7 cables were chosen because they provide high-speed 10 Gbps transmission, excellent shielding against interference, support distances up to 90 m, and ensure compatibility and scalability for future network upgrades.
 - Within the telecommunications enclosures, patch panels are used to terminate the horizontal cabling and are selected to match the type of cabling used. Patch cords are then employed to interconnect the patch panels with active network equipment, such as switches, ensuring flexibility, ease of management, and simplified reconfiguration of network connections.
 
 
@@ -185,9 +172,9 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 
 ## Total Cable Lengths
 
-| Terminal | CAT7 copper cable | Monomode 10 optic fiber cable | Multimode 10 optic fiber cable |
+| Terminal | CAT7 copper cable | Monomode optic fiber cable | Multimode optic fiber cable |
 |:--------:|:-----------------:|:-----------------------------:|:------------------------------:|
-|    3     |      120000 m     |             16m               |             2m                  |
+|    3     |      120000 m     |             16m               |             4652m                  |
 
 *Notes:*
 - The total cable length is the sum of all cable lengths used in the building.
@@ -206,6 +193,6 @@ Considering that standard racks are commonly available with 48U, the infrastruct
 | 24-port Patch Panels  (ISO 8877) |     7      |
 | 48-port Patch Panels  (ISO 8877) |     55     |
 | Access Points                    |     32     |
-| IC (Intermediate Cross-Connect)  |     2      |
-| HC (Horizontal Cross-Connect)    |     23     |
-| Telecommunication Enclosures     |     25     |
+| IC (Intermediate Cross-Connect)  |     1      |
+| HC (Horizontal Cross-Connect)    |     20     |
+| Telecommunication Enclosures     |     21     |
