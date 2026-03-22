@@ -1,6 +1,5 @@
 RCOMP 2025-2026 Project 1 - Sprint 1 - Member 1211920 folder
 ===========================================
-(This folder is to be created/edited by the team member 1211920 only)
 
 This document describes the **structured cabling project for Terminal 5 – Level 2 (Departures)**.
 It complements the main README by detailing the measurements and cabling decisions specific to
@@ -8,17 +7,17 @@ Level 2. All work in this folder corresponds to the task **T.1.3 – Terminal 5*
 
 ## 1. Physical environment – Terminal 5 Level 2
 
-- **Building**: Terminal 5 of the imaginary airport (approx. 400 m × 150 m).
+- [cite_start]**Building**: Terminal 5 of the imaginary airport (approx. 400 m × 150 m)[cite: 193].
 - **Floor included in this document**:
-  - **Level 2 (Departures)** – plan with rooms 1 to 26, an underfloor cable raceway along the external walls with access points marked on the plan, and **four** vertical cable passageways (at the corners) connecting to the underground technical passageway via Level 0. Vertical distance from this floor to the underground connection: **15 m**.
-- **Ceiling**: Level 2 has a structural ceiling at 5 m and a dropped (false) ceiling at 4 m, creating an empty space suitable for cable trays, wireless access points and other networking hardware.
-- **External wall outlets**: One network outlet (ISO 8877) every **5 m** along the **right** external wall and along the **upper** external wall of the plan (30 + 80 = 110 outlets).
+  - [cite_start]**Level 2 (Departures)** – plan with rooms 1 to 26, an underfloor cable raceway along the external walls with access points marked on the plan, and **four** vertical cable passageways (at the corners) connecting to the underground technical passageway via Level 0. Vertical distance from this floor to the underground connection: **15 m**[cite: 232].
+- [cite_start]**Ceiling**: Level 2 has a structural ceiling at 5 m and a dropped (false) ceiling at 4 m, creating an empty space suitable for cable trays, wireless access points and other networking hardware[cite: 226, 227].
+- [cite_start]**External wall outlets**: One network outlet (ISO 8877) every **5 m** along the **right** external wall and along the **upper** external wall of the plan (30 + 80 = 110 outlets)[cite: 269].
 
 ## 2. Measurements and specifications – Level 2 (Departures)
 
 ### 2.1 Level 2 measurements
 
-The floor plan with measurements is available in this folder (see the plan image). A larger image is referenced in the project appendix (Figure 11).
+The floor plan with measurements is available in this folder (see the plan image). [cite_start]A larger image is referenced in the project appendix (Figure 11)[cite: 230].
 
 ### 2.2 Level 2 room specifications
 
@@ -50,44 +49,43 @@ The floor plan with measurements is available in this folder (see the plan image
 *Note: The number of outlets for each room is determined by the area ratio, requiring two outlets for every 10 m² of area.*
 
 *Exceptions and special uses on Level 2:*
-- **Rooms 1, 2, 18, 19, 20, 21, 22 and 26** do not require user outlets (N.R) according to the project description; rooms 1, 2, 22 and 26 are suitable for housing network infrastructure. Ceiling outlets for Wi‑Fi access points are provided where needed for coverage.
-- **Room 1** houses the **Horizontal Cross‑Connect for Level 2 (HC2)**, connected via optical fibre to the IC/HC0 rack in Room 1 on Level 0 through the vertical passageway.
-- **External wall outlets**: 30 along the right wall and 80 along the upper wall (one every 5 m), in addition to the room outlets above.
+- [cite_start]**Rooms 1, 2, 18, 19, 20, 21, 22 and 26** do not require user outlets (N.R)[cite: 266].
+- [cite_start]**Rooms 1, 2, 22 and 26**: Located at the building's extremities, these rooms are suitable for housing the network infrastructure hardware (Horizontal Cross-Connects)[cite: 270].
+- **External wall outlets**: 30 along the right wall and 80 along the upper wall (one every 5 m), creating a high demand for long-distance connectivity.
 
 ## 3. Cabling system – Level 2 (Departures)
 
-### 3.1 Cross‑connects and hierarchy
+### 3.1 Architectural Strategy and Cross‑connects hierarchy
+Addressing the 400x150m floor dimensions and the heavy requirement of 110 outlets along the distant external glass walls, a Fiber-To-The-Zone (FTTZ) architecture mirrors the strategy used on Level 0 to respect the 90m copper limit.
 
-- **Intermediate Cross‑Connect (IC) – Room 1, Level 0**
-  - Located in Room 1 on Level 0 (see Level 0 Description), connecting Terminal 5 to the campus main cross‑connect through optical fibre in the underground technical passageway.
+- **4 Horizontal Cross‑Connects (HCs) – Rooms 1, 2, 22, 26**
+  - Positioned in the designated corner rooms, these 4 HCs divide the departures floor into four management zones.
+  - They receive vertical multimode optical fibre links from the IC/HCs located on Level 0.
 
-- **Horizontal Cross‑Connect for Level 2 (HC2) – Room 1, Level 2**
-  - Copper CAT7 patch panels terminate all horizontal cables from the room outlets, external wall outlets, and Wi‑Fi access points on Level 2.
-  - HC2 is housed in a telecommunications enclosure in Room 1.
-  - HC2 is connected to the IC/HC0 rack in Room 1 Level 0 by multimode optical fibre along the vertical passageway.
+- **7 Active Consolidation Points (CPs / Telecom Enclosures)**
+  - To bridge the geographical gap to the massive departure open-spaces and the continuous line of outlets on the glass wall, 7 Active CPs are deployed.
+  - Key CPs are embedded in the underfloor cable raceways along the middle and right-side areas, functioning as FTTZ mini-switches to feed the external wall outlets without exceeding the standard limits.
 
 ### 3.2 Cable types
 
-- **Horizontal cabling**: copper **CAT7** cables, maximum 90 m per link between HC2 and each outlet or access point.
-- **Backbone cabling**: multimode optical fibre between HC2 (Level 2) and IC/HC0 (Level 0) in the vertical passageway.
+- **Horizontal cabling**: copper **CAT7** cables, maximum 90 m per link between an HC or an Active CP and the final outlet/AP.
+- **Backbone cabling**: **OM3 Multimode optical fibre** establishes the vertical building backbone to Level 0 and horizontally feeds the 7 Active CPs from the HCs.
 
 ### 3.3 Horizontal pathways
 
-- The **underfloor cable raceway** (marked on the plan) is used as the main horizontal pathway on Level 2.
-- From HC2, cable bundles enter the underfloor raceway and follow the raceway along the external perimeter (and internal branches where shown).
-- At **floor cable passageway** points, cables rise to wall outlets or to the space above the dropped ceiling for outlet drops and Wi‑Fi access points.
-- **External wall outlets** (right and upper walls): cables run in the underfloor raceway along those walls and emerge at 5 m intervals to wall‑mounted outlets.
+- The **underfloor cable raceway** is vital on Level 2, particularly to serve the 110 external wall outlets.
+- From the HCs and CPs, cable bundles enter the underfloor raceway and follow the perimeter.
+- At **floor cable passageway** points, cables rise to wall outlets, floor boxes, or to the space above the dropped ceiling for Wi-Fi access points.
 
 ### 3.4 Outlets grouping and distribution
 
-- Room outlets are grouped in **clusters of four RJ45 ports** (two double sockets), distributed along the perimeter walls of rooms 3–17, 23, 24, 25 with typical spacing of **3–4 m**.
-- External wall outlets are single outlets (ISO 8877) every 5 m along the right and upper walls, fed from the perimeter raceway.
+- Room outlets are grouped in **clusters of four RJ45 ports** distributed along the perimeter walls.
+- External wall outlets are single outlets (ISO 8877) every 5 m along the right and upper walls, heavily relying on the central Active CPs for compliant cable lengths.
 
 
 ## 4. Wireless LAN – Level 2 (Departures)
 
-- Wireless coverage is provided using **13 Wi‑Fi access points** (ceiling outlets) installed in the space above the false ceiling.
-- Access points are distributed along the left vertical corridor, in the open areas (including the zone to the right of rooms 6, 7, 8), in or above rooms 18, 19, 20, 21, 22, 26, and in the bottom corridor to ensure full coverage.
-- Rooms without user outlets (1, 2, 18, 19, 20, 21, 22, 26) each have at least one AP in or above the room or in the adjacent corridor.
-- Cables for the APs: HC2 → underfloor raceway / ceiling tray → AP.
-- Non‑overlapping channels are assigned to neighbouring and vertically adjacent APs to reduce interference.
+- Level 2 requires robust wireless LAN coverage for thousands of stationary and waiting passengers.
+- A High-Density layout utilizing **27 Wi‑Fi 6 Access Points (APs)** was deployed over the dropped ceiling.
+- The distribution is heavily focused on capacity rather than just coverage, establishing micro-cells around the boarding gates (Rooms 23, 24, 25) and the extensive open-space waiting areas along the glass walls.
+- Non‑overlapping channels (1, 6, 11) are assigned to neighbouring APs to mitigate Co-Channel Interference (CCI) in this high-density environment.
