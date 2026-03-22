@@ -104,14 +104,14 @@ for every 10 m² of area.*
 
 ## 4. Wireless LAN – Level 0 (Arrivals)
 
-- Wireless coverage is provided using **12 Wi‑Fi access points** installed in the space
+- Wireless coverage is provided using **17 Wi‑Fi access points** installed in the space
   above the false ceiling.
 - The access points are distributed to guarantee overlapping coverage of all passenger and
   service areas:
-  - Two APs above the block of Rooms **1–3**.
-  - Three APs above the block of Rooms **5–7** and the adjacent corridor.
-  - Three APs in the **central arrivals hall**, roughly spaced every 35–45 m.
-  - Four APs above the block of Rooms **12–16**, including one shifted towards Room 16 to
+  - Three APs above the block of Rooms **1–3**.
+  - Four APs above the block of Rooms **5–7** and the adjacent corridor.
+  - Five APs in the **central arrivals hall**, roughly spaced every 35–45 m.
+  - Five APs above the block of Rooms **12–16**, including one shifted towards Room 16 to
     cover the isolated right‑hand block.
 - Cables for the APs follow the same pattern as outlets: HC0 → underfloor raceway →
   floor passageway → false ceiling → AP.
