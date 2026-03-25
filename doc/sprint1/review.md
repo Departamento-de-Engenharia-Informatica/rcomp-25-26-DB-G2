@@ -12,27 +12,98 @@
 | T.1.4   | Development of a structured cabling project for Terminal 5.                                                       | 1211920 |
 | T.1.5   | Development of a structured cabling project for Terminal 4.                                                       | 1240751 |
 
-## Total Hardware Inventory
+# Consolidated Project Hardware Inventory
 
-| Building | Outlets | CAT7 Cables | Monomode 10 Cables | 12-port Patch Panels | 24-port Patch Panels | 48-port Patch Panels | Access Points | Telecommunications Enclosures |
-|:--------:|:-------:|:-----------:|:------------------:|:--------------------:|:--------------------:|:--------------------:|:-------------:|:-----------------------------:|
-|    1     |   92    |     99      |         6          |          5           |          4           |          4           |       2       |               7               |
-|    2     |   152   |     161     |         4          |          0           |          8           |          0           |       4       |               7               |
-|    3     |   176   |     193     |         3          |          13          |          3           |          0           |       4       |              15               |
-|    4     |   190   |     207     |         4          |          11          |          5           |          0           |       4       |              15               |
-|  Total   |   610   |     660     |         17         |          29          |          20          |          4           |      14       |              44               |
+This document provides a comprehensive breakdown of the hardware inventory for each terminal based on individual member reports, followed by a project-wide sum total.
 
-## Total Cabling Inventory
+---
 
-| Building | CAT7 cable (m) | Monomode 10 cable (m) |
-|:--------:|:--------------:|:---------------------:|
-|    1     |     948.3      |          13           |
-|    2     |    5981,16     |          11           |
-|    3     |    2034,07     |         28,76         |
-|    4     |      1810      |           7           |
-| Backbone |       -        |         2095          |
-|  Total   |    10773,53    |        2154,76        |
+## Terminal 4 
+**Levels Covered:** 0 (Arrivals) and 2 (Departures)
 
+| Item | Quantity |
+| :--- | :---: |
+| Outlets (RJ45 user ports) | 1,521 |
+| CAT7 Cables | 1,551 |
+| 24-port Patch Panels (ISO 8877) | 8 |
+| 48-port Patch Panels (ISO 8877) | 32 |
+| Access Points | 30 |
+| Intermediate Cross-Connect (IC) | 1 |
+| Horizontal Cross-Connect (HC) | 2 |
+| Telecommunication Enclosures | 2 (Total of 7 racks) |
+
+---
+
+## Terminal 3 
+**Levels Covered:** 1 (Departures) and 2 (Arrivals)
+
+| Item | Quantity |
+| :--- | :---: |
+| Outlets | 1,689 |
+| CAT7 Cables | 1,721 |
+| 24-port Patch Panels (ISO 8877) | 7 |
+| 48-port Patch Panels (ISO 8877) | 55 |
+| Access Points | 32 |
+| Intermediate Cross-Connect (IC) | 1 |
+| Horizontal Cross-Connect (HC) | 20 |
+| Telecommunication Enclosures | 21 |
+
+---
+
+## Terminal 2 
+**Levels Covered:** 1 (Arrivals)
+
+| Item                            | Quantity |
+|:--------------------------------|:--------:|
+| Fixed User Outlets              |   562    |
+|  Access Points                  |    16    |
+| Intermediate Cross-Connect (IC) |    1     |
+| Horizontal Cross-Connect (HC)   |    11    |
+| Telecommunication Enclosures    |    12    |
+
+---
+
+## Terminal 5 (Consolidated Levels 0 & 2)
+**Levels Covered:** 0 (Arrivals) and 2 (Departures)
+
+| Item | Quantity |
+| :--- | :---: |
+| RJ45 User Outlets (Total Ports) | 2,590 |
+| CAT7 Horizontal Cables | 2,643 |
+| 24-port Copper Patch Panels | 128 |
+| 24-port Fibre Patch Panels | 9 |
+| Wi-Fi 6 Access Points | 53 |
+| Intermediate Cross-Connect (IC) | 1 |
+| Active Consolidation Points (HC/TE) | 17 |
+| Telecommunication Enclosures (Racks) | 8 |
+
+---
+
+## Terminal 2
+**Levels Covered:** Departures Infrastructure
+
+| Item | Quantity |
+| :--- | :---: |
+| Outlets | 640 |
+| CAT6/CAT6A Cables | 660 |
+| 24-port Patch Panels (ISO 8877) | 2 |
+| 48-port Patch Panels (ISO 8877) | 14 |
+| Access Points | 16 |
+| Intermediate Cross-Connect (IC) | 1 |
+| Horizontal Cross-Connect (HC) | 7 |
+
+---
+
+## Project Grand Totals
+
+| Category | Sum Total |
+| :--- | :---: |
+| **Total Outlets / Ports** | **7,002** |
+| **Total Copper Cables** | **7,206** |
+| **Total Access Points** | **200** |
+| **Intermediate Cross-Connects (IC)** | **5** |
+| **Horizontal Cross-Connects (HC)** | **57** |
+| **Telecommunication Enclosures / Racks** | **50** |
 ## Taks implementation status
 
 ### 1220957
