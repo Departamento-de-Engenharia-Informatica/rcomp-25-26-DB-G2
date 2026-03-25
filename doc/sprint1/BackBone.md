@@ -38,7 +38,6 @@ To guarantee 99.99% availability, the design incorporates **Path Diversity**:
 ---
 
 ## 5. Hardware at the Main Cross-connect (MC)
-The MC acts as the central hub for the entire airport. It is equipped with:
+The MC acts as the central hub (located at T2 as it's the closest to all other Terminals) for the entire airport. It is equipped with:
 * **High-Density Optical Distribution Frames (ODF):** To terminate the hundreds of fiber strands coming from across the campus.
 * **Chassis-Based Core Switches:** Designed for high availability with redundant power supplies and processing modules.
-* **Singlemode Transceivers:** To interface with the long-distance campus cabling.

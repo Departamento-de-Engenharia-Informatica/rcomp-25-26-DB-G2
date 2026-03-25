@@ -4,12 +4,13 @@
 
 # Sprint backlog
 
-| Task ID | Task description                                                                              | Student |
-|---------|-----------------------------------------------------------------------------------------------|---------|
-| T.1.1   | Development of a structured cabling project for building 1, encompassing the campus backbone. | 1220957 |
-| T.1.2   | Development of a structured cabling project for building 2.                                   | 1220952 |
-| T.1.3   | Development of a structured cabling project for building 3.                                   | 1212369 |
-| T.1.4   | Development of a structured cabling project for building 4.                                   | 1220822 |
+| Task ID | Task description                                                                                                  | Student |
+|---------|-------------------------------------------------------------------------------------------------------------------|---------|
+| T.1.1   | Development of a structured cabling project for Terminal 2, Level 1 (Arrivals), encompassing the campus backbone. | 1222215 |
+| T.1.2   | Development of a structured cabling project for Terminal 2, Level 4 (Departures).                                 | 1211369 |
+| T.1.3   | Development of a structured cabling project for Terminal 3.                                                       | 1224729 |
+| T.1.4   | Development of a structured cabling project for Terminal 5.                                                       | 1211920 |
+| T.1.5   | Development of a structured cabling project for Terminal 4.                                                       | 1240751 |
 
 ## Total Hardware Inventory
 

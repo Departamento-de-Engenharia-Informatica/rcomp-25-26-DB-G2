@@ -14,17 +14,17 @@ This project implements a high-performance, future-proofed structured cabling sy
 
 ## 2. Outlet Requirements & Area Calculations (Arrivals)
 
-| Room ID | Width (m) | Length (m) | Area (m²) | Required Outlets |
-|:---|:---|:---|:---|:---|
-| **Room 1** | 27.20 | 13.84* | 376.45 | 76 |
-| **Room 2** | 21.05 | 13.84* | 291.33 | 59 |
-| **Room 3 & 5** | 33.35 | 13.84* | 461.56 | 93 |
-| **Room 4** | 38.99 | 13.84* | 539.62 | 108 |
-| **Room 6** | 8.05 | 11.07 | 89.11 | **Infrastructure (IC Hub)** |
-| **Room 7 & 8** | 27.41 | 16.87 | 462.40 | 93 |
-| **Room 9 & 10** | 24.38* | 18.96 | 462.24 | 93 |
-| **Room 11 & 12** | 10.85* | 10.85* | 117.72 | **Infrastructure** |
-| **South & East wall** | N/A | 200 | N/A | 40 |
+| Room ID | Width (m) | Length (m) | Area (m²) | Required Outlets               |
+|:---|:---|:---|:---|:-------------------------------|
+| **Room 1** | 27.20 | 13.84* | 376.45 | 76                             |
+| **Room 2** | 21.05 | 13.84* | 291.33 | 59                             |
+| **Room 3 & 5** | 33.35 | 13.84* | 461.56 | 93                             |
+| **Room 4** | 38.99 | 13.84* | 539.62 | 108                            |
+| **Room 6** | 8.05 | 11.07 | 89.11 | **Infrastructure (MC/IC Hub)** |
+| **Room 7 & 8** | 27.41 | 16.87 | 462.40 | 93                             |
+| **Room 9 & 10** | 24.38* | 18.96 | 462.24 | 93                             |
+| **Room 11 & 12** | 10.85* | 10.85* | 117.72 | **Infrastructure**             |
+| **South & East wall** | N/A | 200 | N/A | 40                             |
 
 > **Calculations Rule:** 2 outlets per 10m² rounded up.
 > **Standardization Note:** (*) Measurements averaged or standardized to account for minor measurement variance.
