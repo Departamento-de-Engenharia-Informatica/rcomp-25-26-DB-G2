@@ -83,8 +83,8 @@ Each team member is responsible for developing a complete Layer 2 and Layer 3 ne
 - **Members:**
   - [Simão Guedes & Martim Penedones] – Terminal 2
   - [Rita Oliveira] – Terminal 3
-  - [Gonçalo Silva] – Terminal 4
-  - [Afosnso Simões] – Terminal 5
+  - [Afonso Simões] – Terminal 4
+  - [Gonçalo Silva] – Terminal 5
 
 ---
 
@@ -126,7 +126,8 @@ All team members will use:
 | 765 | T5_SERVERS      | Terminal 5 servers |
 
 - **Default VLAN:** 1  
-- **Native VLAN:** [definir]
+- **Native VLAN:** 749 SWITCH_DMZ
+The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and untagged traffic on trunk links.
 
 ---
 
@@ -202,10 +203,10 @@ All team members will use:
 
 | Member | Terminal | Assigned Block |
 |--------|---------|----------------|
-| [Nome] | T2 | 10.0.4.0/20 |
-| [Nome] | T3 | 10.0.20.0/20 |
-| [Nome] | T4 | 10.0.36.0/20 |
-| [Nome] | T5 | 10.0.52.0/20 |
+| [Simão Guedes & Martim Penedones] | T2 | 10.0.4.0/20 |
+| [Rita Oliveira] | T3 | 10.0.20.0/20 |
+| [Afonso Simões] | T4 | 10.0.36.0/20 |
+| [Gonçalo Silva] | T5 | 10.0.52.0/20 |
 
 ---
 
