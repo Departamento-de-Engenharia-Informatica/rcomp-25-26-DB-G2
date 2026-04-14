@@ -103,6 +103,17 @@ All networks are derived from this block and are non-overlapping.
 
 ---
 
+## Switches DMZ Addressing Scheme
+
+| Terminal   | Switch IP Range         | 
+|------------|-------------------------|
+| Terminal 2 | 10.51.1.10 – 10.51.1.19 | 
+| Terminal 3 | 10.51.1.20 – 10.51.1.29 | 
+| Terminal 4 | 10.51.1.30 – 10.51.1.39 | 
+| Terminal 5 | 10.51.1.40 – 10.51.1.49 | 
+
+---
+
 ### VLAN Networks per Terminal
 
 #### Terminal 2
