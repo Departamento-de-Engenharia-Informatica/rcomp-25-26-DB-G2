@@ -1,96 +1,38 @@
-RCOMP 2025-2026 Project 1 - Sprint 2 planning
+COMP 2025-2026 Project 1 - Sprint 2 planning
 ===========================================
 ### Sprint master: 1240729 ###
+
 (This file is to be created/edited by the sprint master only)
+
+---
+
 # 1. Sprint's backlog #
-(Copy here a summary of the provided sprint's backlog)
+
+Development of a network simulation using Cisco Packet Tracer, focusing on:
+- Layer 2 infrastructure (switching, VLANs, trunks, VTP)
+- Layer 3 fundamentals (IPv4 addressing and static routing)
+
+Each team member is responsible for one terminal simulation, including the campus backbone.  
+Terminal 3 is additionally responsible for integrating all simulations into a single file.
+
+---
+
 # 2. Technical decisions and coordination #
-In this section, all technical decisions taken in the planning meeting should be mentioned. 		Most importantly, all technical decisions impacting on the subtasks implementation must be settled on this 		meeting and specified here.
-
-#### Examples: ####
-  * Packet Tracer version to be used
-  * Devices naming
-  * VLAN IDs to be used
-  * VTP domains' names
-  * IPv4 networks' addresses and routers' addresses
-
-# 3. Subtasks assignment #
-(For each team member (sprint master included), the description of the assigned subtask in sprint 2)
-
-## 3. Subtasks Assignment
-
-Each team member is responsible for developing a complete Layer 2 and Layer 3 network simulation for a specific terminal, based on the structured cabling project from Sprint 1. All simulations must include the campus backbone and follow the common planning decisions defined by the team.
-
----
-
-- **[Member(s) 1222215 & 1211369] – Terminal 2 (T.2.1)**  
-  Responsible for developing the Packet Tracer simulation for Terminal 2, including:
-  - Implementation of the Layer 2 topology with two switches (one per floor)
-  - Configuration of all VLANs (global and terminal-specific)
-  - Configuration of trunk links between switches and towards the router
-  - VTP configuration (domain and mode)
-  - Assignment of IPv4 networks to each VLAN according to requirements
-  - Configuration of the router (2811) using router-on-a-stick (subinterfaces)
-  - Static routing configuration
-  - Implementation of the Internet connection (DSL modem + ISP router)
-  - Configuration of end devices (PCs, Wi-Fi, server, VoIP phone)
-
----
-
-- **[Member 1240729] – Terminal 3 (T.2.2)**  
-  Responsible for developing the Packet Tracer simulation for Terminal 3, including:
-  - Full Layer 2 and Layer 3 configuration (as described for other terminals)
-  - VLAN and VTP configuration
-  - IPv4 addressing and subnetting
-  - Router configuration and static routing
-  - Configuration of end devices
-
-  Additionally responsible for:
-  - Integration of all team members’ simulations into a single file (**campus.pkt**)
-  - Rebuilding backbone connections between terminals
-  - Ensuring consistency across all configurations
-
----
-
-- **[Member 1240751] – Terminal 4 (T.2.4)**  
-  Responsible for developing the Packet Tracer simulation for Terminal 4, including:
-  - Layer 2 topology implementation
-  - VLAN creation and trunk configuration
-  - VTP configuration
-  - IPv4 addressing for all VLANs
-  - Router-on-a-stick configuration
-  - Static routing setup
-  - Configuration of required end devices
-
----
-
-- **[Member 1211920] – Terminal 5 (T.2.3)**  
-  Responsible for developing the Packet Tracer simulation for Terminal 5, including:
-  - Layer 2 topology implementation
-  - VLAN and trunk configuration
-  - VTP configuration
-  - IPv4 addressing and subnetting
-  - Router configuration (subinterfaces)
-  - Static routing
-  - Configuration of end devices
-
-
----
- # Sprint 2 – Planning
-
-## Team Information
-- **Sprint Master:** [Rita Oliveira]  
-- **Members:**
-  - [Simão Guedes & Martim Penedones] – Terminal 2
-  - [Rita Oliveira] – Terminal 3
-  - [Afonso Simões] – Terminal 4
-  - [Gonçalo Silva] – Terminal 5
-
----
 
 ## Packet Tracer Version
 All team members will use:
-- **Cisco Packet Tracer version:** [a definir ]
+- **Cisco Packet Tracer version:** 9.0.0
+
+---
+
+## Device Naming Convention
+
+| Device Type | Format Example |
+|------------|---------------|
+| Switch | SW-T2-F1 |
+| Router | R-T3 |
+| Access Point | AP-T4 |
+| PC | PC-T5-USER |
 
 ---
 
@@ -126,19 +68,27 @@ All team members will use:
 | 765 | T5_SERVERS      | Terminal 5 servers |
 
 - **Default VLAN:** 1  
-- **Native VLAN:** 749 SWITCH_DMZ
-The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and untagged traffic on trunk links.
+- **Native VLAN:** 749 (SWITCH_DMZ)  
+The native VLAN will be used for untagged traffic on trunk links and switch management.
 
 ---
 
 ## IPv4 Addressing Plan
 
+### Address Space
+The team will use the IPv4 block:
+- **10.51.0.0/17**
+
+All networks are derived from this block and are non-overlapping.
+
+---
+
 ### Global Networks
 
 | Network | Address | Description |
 |--------|--------|------------|
-| Backbone | 10.0.0.0/24 | Inter-terminal communication |
-| Switches DMZ | 10.0.1.0/23 | Switch management |
+| Backbone | 10.51.0.0/24 | Inter-terminal communication |
+| Switches DMZ | 10.51.1.0/23 | Switch management |
 
 ---
 
@@ -146,10 +96,10 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | Terminal | Router IP |
 |--------|-----------|
-| T2 | 10.0.0.1 |
-| T3 | 10.0.0.2 |
-| T4 | 10.0.0.3 |
-| T5 | 10.0.0.4 |
+| T2 | 10.51.0.1 |
+| T3 | 10.51.0.2 |
+| T4 | 10.51.0.3 |
+| T5 | 10.51.0.4 |
 
 ---
 
@@ -159,10 +109,10 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | VLAN | Network | Description |
 |------|--------|------------|
-| T2_USERS | 10.0.4.0/22 | User outlets |
-| T2_WIFI | 10.0.8.0/21 | Wi-Fi |
-| T2_VOIP | 10.0.16.0/23 | VoIP |
-| T2_SERVERS | 10.0.18.0/25 | Servers |
+| T2_USERS | 10.51.4.0/22 | User outlets |
+| T2_WIFI | 10.51.8.0/21 | Wi-Fi |
+| T2_VOIP | 10.51.16.0/23 | VoIP |
+| T2_SERVERS | 10.51.18.0/25 | Servers |
 
 ---
 
@@ -170,10 +120,10 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | VLAN | Network | Description |
 |------|--------|------------|
-| T3_USERS | 10.0.20.0/22 | User outlets |
-| T3_WIFI | 10.0.24.0/21 | Wi-Fi |
-| T3_VOIP | 10.0.32.0/23 | VoIP |
-| T3_SERVERS | 10.0.34.0/25 | Servers |
+| T3_USERS | 10.51.20.0/22 | User outlets |
+| T3_WIFI | 10.51.24.0/21 | Wi-Fi |
+| T3_VOIP | 10.51.32.0/23 | VoIP |
+| T3_SERVERS | 10.51.34.0/25 | Servers |
 
 ---
 
@@ -181,10 +131,10 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | VLAN | Network | Description |
 |------|--------|------------|
-| T4_USERS | 10.0.36.0/22 | User outlets |
-| T4_WIFI | 10.0.40.0/21 | Wi-Fi |
-| T4_VOIP | 10.0.48.0/23 | VoIP |
-| T4_SERVERS | 10.0.50.0/25 | Servers |
+| T4_USERS | 10.51.36.0/22 | User outlets |
+| T4_WIFI | 10.51.40.0/21 | Wi-Fi |
+| T4_VOIP | 10.51.48.0/23 | VoIP |
+| T4_SERVERS | 10.51.50.0/25 | Servers |
 
 ---
 
@@ -192,10 +142,10 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | VLAN | Network | Description |
 |------|--------|------------|
-| T5_USERS | 10.0.52.0/22 | User outlets |
-| T5_WIFI | 10.0.56.0/21 | Wi-Fi |
-| T5_VOIP | 10.0.64.0/23 | VoIP |
-| T5_SERVERS | 10.0.66.0/25 | Servers |
+| T5_USERS | 10.51.52.0/22 | User outlets |
+| T5_WIFI | 10.51.56.0/21 | Wi-Fi |
+| T5_VOIP | 10.51.64.0/23 | VoIP |
+| T5_SERVERS | 10.51.66.0/25 | Servers |
 
 ---
 
@@ -203,37 +153,102 @@ The native VLAN will be VLAN 749 (SWITCH_DMZ), used for switch management and un
 
 | Member | Terminal | Assigned Block |
 |--------|---------|----------------|
-| [Simão Guedes & Martim Penedones] | T2 | 10.0.4.0/20 |
-| [Rita Oliveira] | T3 | 10.0.20.0/20 |
-| [Afonso Simões] | T4 | 10.0.36.0/20 |
-| [Gonçalo Silva] | T5 | 10.0.52.0/20 |
-
----
-
-## Device Naming Convention
-
-| Device Type | Format Example |
-|------------|---------------|
-| Switch | SW-T2-F1 |
-| Router | R-T3 |
-| Access Point | AP-T4 |
-| PC | PC-T5-USER |
+| Simão Guedes & Martim Penedones | T2 | 10.51.4.0/20 |
+| Rita Oliveira | T3 | 10.51.20.0/20 |
+| Afonso Simões | T4 | 10.51.36.0/20 |
+| Gonçalo Silva | T5 | 10.51.52.0/20 |
 
 ---
 
 ## Technical Decisions
 
 - All inter-switch links use **trunk mode**
-- All VLANs must exist on every switch
+- All VLANs will be propagated to all switches using **VTP**
 - STP remains enabled (default)
 - Router-on-a-stick will be used for inter-VLAN routing
-- Static routing will be used between terminals
+- Static routing will be used between terminals via the backbone network
+- The first usable IP of each VLAN will be used as the default gateway
+
+---
+
+# 3. Subtasks Assignment
+
+Each team member is responsible for developing a complete Layer 2 and Layer 3 network simulation for a specific terminal.
+
+All simulations must include the campus backbone and follow the global planning decisions.
+
+---
+
+### Terminal 2 – T.2.1 (Simão Guedes & Martim Penedones)
+
+- Layer 2 topology implementation
+- Campus backbone connection
+- VLAN and trunk configuration
+- VTP configuration
+- Switches DMZ configuration (management IPs)
+- IPv4 addressing
+- Router configuration (2811, router-on-a-stick)
+- Static routing
+- Internet connection (DSL modem + ISP router)
+- End devices configuration:
+  - PC (Users)
+  - PC (DMZ)
+  - Wi-Fi laptop
+  - Server
+  - VoIP phone
+
+---
+
+### Terminal 3 – T.2.2 (Rita Oliveira)
+
+- Full Layer 2 and Layer 3 implementation
+- Campus backbone connection
+- VLAN and trunk configuration
+- VTP configuration
+- Switches DMZ configuration
+- IPv4 addressing
+- Router configuration
+- Static routing
+- End devices configuration
+
+**Additional responsibilities:**
+- Integration into **campus.pkt**
+- Rebuilding backbone connections
+- Ensuring consistency across all terminals
+
+---
+
+### Terminal 4 – T.2.4 (Afonso Simões)
+
+- Layer 2 topology implementation
+- Campus backbone connection
+- VLAN and trunk configuration
+- VTP configuration
+- Switches DMZ configuration
+- IPv4 addressing
+- Router-on-a-stick configuration
+- Static routing
+- End devices configuration
+
+---
+
+### Terminal 5 – T.2.3 (Gonçalo Silva)
+
+- Layer 2 topology implementation
+- Campus backbone connection
+- VLAN and trunk configuration
+- VTP configuration
+- Switches DMZ configuration
+- IPv4 addressing
+- Router configuration
+- Static routing
+- End devices configuration
 
 ---
 
 ## Notes
 
-- All IP ranges must be non-overlapping  
-- All VLAN IDs must be within range **748–768**  
-- All switches must use the same VTP domain  
-- Configurations must be exported regularly  
+- All IP ranges are non-overlapping and within the assigned block
+- All VLAN IDs are within the required range (748–768)
+- All switches use the same VTP domain
+- Configurations must be exported regularly
