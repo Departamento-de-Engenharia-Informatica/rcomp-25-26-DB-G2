@@ -78,57 +78,59 @@ All team members will use:
 ## Address Space
 - **Total Block:** 10.51.0.0/17 (Range: 10.51.0.0 - 10.51.127.255)
 
-## Global Networks
+# IP Addressing and VLAN Planning
 
-| Network | Address/Mask | Available IPs | Description |
-|--------|--------------|---------------|-------------|
-| Backbone | 10.51.0.0/24 | 254 | Inter-terminal (Router IPs: .1, .2, .3, .4) |
-| Switches DMZ | 10.51.2.0/23 | 510 | Management (IPs: 10.51.2.1 - 10.51.3.254) |
+## 1. Global Networks (Backbone and Management)
 
-## VLAN Networks per Terminal (Adjusted for Host Requirements)
+| Network | Address/Mask | Description |
+| :--- | :--- | :--- |
+| **Backbone** | 10.51.0.0/24 | Inter-terminal Link (Router IPs: T2: .1, T3: .2, T4: .3, T5: .4) |
+| **DMZ Switches** | 10.51.1.0/24 | Switch Management (Isolated, no routing) |
 
-### Terminal 2 (Requirement: ~3600 nodes)
-| VLAN | Network | Mask | Description |
-|------|---------|------|-------------|
-| T2_USERS | 10.51.8.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
-| T2_WIFI | 10.51.16.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
-| T2_VOIP | 10.51.4.0/23 | 255.255.254.0 | VoIP (510 hosts) |
-| T2_SERVERS | 10.51.6.0/25 | 255.255.255.128 | Servers (126 hosts) |
+## 2. Address Blocks per Member (Summary)
 
-### Terminal 3 (Requirement: ~2950 nodes)
-| VLAN | Network | Mask | Description |
-|------|---------|------|-------------|
-| T3_USERS | 10.51.24.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
-| T3_WIFI | 10.51.32.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
-| T3_VOIP | 10.51.28.0/23 | 255.255.254.0 | VoIP (510 hosts) |
-| T3_SERVERS | 10.51.30.0/24 | 255.255.255.0 | Servers (254 hosts) |
-
-### Terminal 4 (Requirement: ~3120 nodes)
-| VLAN | Network | Mask | Description |
-|------|---------|------|-------------|
-| T4_USERS | 10.51.40.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
-| T4_WIFI | 10.51.48.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
-| T4_VOIP | 10.51.44.0/23 | 255.255.254.0 | VoIP (510 hosts) |
-| T4_SERVERS | 10.51.46.0/25 | 255.255.255.128 | Servers (126 hosts) |
-
-### Terminal 5 (Requirement: ~6600 nodes)
-| VLAN | Network | Mask | Description |
-|------|---------|------|-------------|
-| T5_WIFI | 10.51.64.0/20 | 255.255.240.0 | Wi-Fi (4094 hosts) |
-| T5_USERS | 10.51.80.0/21 | 255.255.248.0 | User outlets (2046 hosts) |
-| T5_VOIP | 10.51.88.0/23 | 255.255.254.0 | VoIP (510 hosts) |
-| T5_SERVERS | 10.51.90.0/24 | 255.255.255.0 | Servers (254 hosts) |
+| Member | Terminal | Assigned Block | IP Range (3rd Octet) |
+| :--- | :--- | :--- | :--- |
+| Simão G. & Martim P. | Terminal 2 | 10.51.0.0/20 | 10.51.0.0 - 10.51.15.255 |
+| Rita Oliveira | Terminal 3 | 10.51.16.0/20 | 10.51.16.0 - 10.51.31.255 |
+| Afonso Simões | Terminal 4 | 10.51.32.0/20 | 10.51.32.0 - 10.51.47.255 |
+| Gonçalo Silva | Terminal 5 | 10.51.64.0/19 | 10.51.64.0 - 10.51.95.255 |
 
 ---
 
-## Address Blocks per Member
+## 3. VLAN Details per Terminal
 
-| Member | Terminal | Assigned Block |
-|--------|---------|----------------|
-| Simão Guedes & Martim Penedones | T2 | 10.51.4.0/20 |
-| Rita Oliveira | T3 | 10.51.24.0/20 |
-| Afonso Simões | T4 | 10.51.40.0/20 |
-| Gonçalo Silva | T5 | 10.51.64.0/19 |
+### Terminal 2 (Requirement: ~3600 nodes)
+| VLAN | Network | Mask | Description |
+| :--- | :--- | :--- | :--- |
+| T2_VOIP | 10.51.4.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
+| T2_SERVERS | 10.51.6.0/25 | 255.255.255.128 | Local Servers (126 hosts) |
+| T2_USERS | 10.51.8.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
+| T2_WIFI | 10.51.12.0/22 | 255.255.252.0 | Wireless Network (1022 hosts) |
+
+### Terminal 3 - Integrator (Requirement: ~2950 nodes)
+| VLAN | Network | Mask | Description |
+| :--- | :--- | :--- | :--- |
+| T3_WIFI | 10.51.16.0/21 | 255.255.248.0 | Wireless Network (2046 hosts) |
+| T3_USERS | 10.51.24.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
+| T3_VOIP | 10.51.28.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
+| T3_SERVERS | 10.51.30.0/24 | 255.255.255.0 | Local Servers (254 hosts) |
+
+### Terminal 4 (Requirement: ~3120 nodes)
+| VLAN | Network | Mask | Description |
+| :--- | :--- | :--- | :--- |
+| T4_WIFI | 10.51.32.0/21 | 255.255.248.0 | Wireless Network (2046 hosts) |
+| T4_USERS | 10.51.40.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
+| T4_VOIP | 10.51.44.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
+| T4_SERVERS | 10.51.46.0/25 | 255.255.255.128 | Local Servers (126 hosts) |
+
+### Terminal 5 (Requirement: ~6600 nodes)
+| VLAN | Network | Mask | Description |
+| :--- | :--- | :--- | :--- |
+| T5_WIFI | 10.51.64.0/20 | 255.255.240.0 | Wireless Network (4094 hosts) |
+| T5_USERS | 10.51.80.0/21 | 255.255.248.0 | User Workstations (2046 hosts) |
+| T5_VOIP | 10.51.88.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
+| T5_SERVERS | 10.51.90.0/24 | 255.255.255.0 | Local Servers (254 hosts) |
 
 ---
 
