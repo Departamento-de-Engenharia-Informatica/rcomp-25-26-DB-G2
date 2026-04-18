@@ -1,4 +1,5 @@
-COMP 2025-2026 Project 1 - Sprint 2 planning
+
+# COMP 2025-2026 Project 1 - Sprint 2 planning
 ===========================================
 ### Sprint master: 1240729 ###
 
@@ -39,155 +40,112 @@ All team members will use:
 ## VTP Configuration
 - **VTP Domain:** `rc2526dbg2`
 - **VTP Mode:**
-  - Core switches → Server
+  - Core switches (Backbone) → Server
   - Remaining switches → Client
 
 ---
 
 ## VLAN Plan
 
-| VLAN ID | VLAN Name        | Description |
+| VLAN ID | VLAN Name | Description |
 |--------|----------------|------------|
-| 748 | BACKBONE        | Campus backbone network |
-| 749 | SWITCH_DMZ      | Switch management network |
-| 750 | T2_USERS        | Terminal 2 user outlets |
-| 751 | T2_WIFI         | Terminal 2 Wi-Fi |
-| 752 | T2_VOIP         | Terminal 2 VoIP |
-| 753 | T2_SERVERS      | Terminal 2 servers |
-| 754 | T3_USERS        | Terminal 3 user outlets |
-| 755 | T3_WIFI         | Terminal 3 Wi-Fi |
-| 756 | T3_VOIP         | Terminal 3 VoIP |
-| 757 | T3_SERVERS      | Terminal 3 servers |
-| 758 | T4_USERS        | Terminal 4 user outlets |
-| 759 | T4_WIFI         | Terminal 4 Wi-Fi |
-| 760 | T4_VOIP         | Terminal 4 VoIP |
-| 761 | T4_SERVERS      | Terminal 4 servers |
-| 762 | T5_USERS        | Terminal 5 user outlets |
-| 763 | T5_WIFI         | Terminal 5 Wi-Fi |
-| 764 | T5_VOIP         | Terminal 5 VoIP |
-| 765 | T5_SERVERS      | Terminal 5 servers |
+| 748 | BACKBONE | Campus backbone network |
+| 749 | SWITCH_DMZ | Switch management network |
+| 750 | T2_USERS | Terminal 2 user outlets |
+| 751 | T2_WIFI | Terminal 2 Wi-Fi |
+| 752 | T2_VOIP | Terminal 2 VoIP |
+| 753 | T2_SERVERS | Terminal 2 servers |
+| 754 | T3_USERS | Terminal 3 user outlets |
+| 755 | T3_WIFI | Terminal 3 Wi-Fi |
+| 756 | T3_VOIP | Terminal 3 VoIP |
+| 757 | T3_SERVERS | Terminal 3 servers |
+| 758 | T4_USERS | Terminal 4 user outlets |
+| 759 | T4_WIFI | Terminal 4 Wi-Fi |
+| 760 | T4_VOIP | Terminal 4 VoIP |
+| 761 | T4_SERVERS | Terminal 4 servers |
+| 762 | T5_USERS | Terminal 5 user outlets |
+| 763 | T5_WIFI | Terminal 5 Wi-Fi |
+| 764 | T5_VOIP | Terminal 5 VoIP |
+| 765 | T5_SERVERS | Terminal 5 servers |
 
 - **Default VLAN:** 1  
 - **Native VLAN:** 749 (SWITCH_DMZ)  
-The native VLAN will be used for untagged traffic on trunk links and switch management.
 
 ---
 
-## IPv4 Addressing Plan
+# 3. IPv4 Addressing Plan
 
-### Address Space
-The team will use the IPv4 block:
-- **10.51.0.0/17**
+## Address Space
+- **Total Block:** 10.51.0.0/17 (Range: 10.51.0.0 - 10.51.127.255)
 
-All networks are derived from this block and are non-overlapping.
+## Global Networks
 
----
+| Network | Address/Mask | Available IPs | Description |
+|--------|--------------|---------------|-------------|
+| Backbone | 10.51.0.0/24 | 254 | Inter-terminal (Router IPs: .1, .2, .3, .4) |
+| Switches DMZ | 10.51.2.0/23 | 510 | Management (IPs: 10.51.2.1 - 10.51.3.254) |
 
-### Global Networks
+## VLAN Networks per Terminal (Adjusted for Host Requirements)
 
-| Network | Address | Description |
-|--------|--------|------------|
-| Backbone | 10.51.0.0/24 | Inter-terminal communication |
-| Switches DMZ | 10.51.1.0/23 | Switch management |
+### Terminal 2 (Requirement: ~3600 nodes)
+| VLAN | Network | Mask | Description |
+|------|---------|------|-------------|
+| T2_USERS | 10.51.8.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
+| T2_WIFI | 10.51.16.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
+| T2_VOIP | 10.51.4.0/23 | 255.255.254.0 | VoIP (510 hosts) |
+| T2_SERVERS | 10.51.6.0/25 | 255.255.255.128 | Servers (126 hosts) |
 
----
+### Terminal 3 (Requirement: ~2950 nodes)
+| VLAN | Network | Mask | Description |
+|------|---------|------|-------------|
+| T3_USERS | 10.51.24.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
+| T3_WIFI | 10.51.32.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
+| T3_VOIP | 10.51.28.0/23 | 255.255.254.0 | VoIP (510 hosts) |
+| T3_SERVERS | 10.51.30.0/24 | 255.255.255.0 | Servers (254 hosts) |
 
-### Router IPs (Backbone)
+### Terminal 4 (Requirement: ~3120 nodes)
+| VLAN | Network | Mask | Description |
+|------|---------|------|-------------|
+| T4_USERS | 10.51.40.0/22 | 255.255.252.0 | User outlets (1022 hosts) |
+| T4_WIFI | 10.51.48.0/21 | 255.255.248.0 | Wi-Fi (2046 hosts) |
+| T4_VOIP | 10.51.44.0/23 | 255.255.254.0 | VoIP (510 hosts) |
+| T4_SERVERS | 10.51.46.0/25 | 255.255.255.128 | Servers (126 hosts) |
 
-| Terminal | Router IP |
-|--------|-----------|
-| T2 | 10.51.0.1 |
-| T3 | 10.51.0.2 |
-| T4 | 10.51.0.3 |
-| T5 | 10.51.0.4 |
-
----
-
-## Switches DMZ Addressing Scheme
-
-| Terminal   | Switch IP Range         | 
-|------------|-------------------------|
-| Terminal 2 | 10.51.1.10 – 10.51.1.19 | 
-| Terminal 3 | 10.51.1.20 – 10.51.1.29 | 
-| Terminal 4 | 10.51.1.30 – 10.51.1.39 | 
-| Terminal 5 | 10.51.1.40 – 10.51.1.49 | 
-
----
-
-### VLAN Networks per Terminal
-
-#### Terminal 2
-
-| VLAN | Network | Description |
-|------|--------|------------|
-| T2_USERS | 10.51.4.0/22 | User outlets |
-| T2_WIFI | 10.51.8.0/21 | Wi-Fi |
-| T2_VOIP | 10.51.16.0/23 | VoIP |
-| T2_SERVERS | 10.51.18.0/25 | Servers |
+### Terminal 5 (Requirement: ~6600 nodes)
+| VLAN | Network | Mask | Description |
+|------|---------|------|-------------|
+| T5_WIFI | 10.51.64.0/20 | 255.255.240.0 | Wi-Fi (4094 hosts) |
+| T5_USERS | 10.51.80.0/21 | 255.255.248.0 | User outlets (2046 hosts) |
+| T5_VOIP | 10.51.88.0/23 | 255.255.254.0 | VoIP (510 hosts) |
+| T5_SERVERS | 10.51.90.0/24 | 255.255.255.0 | Servers (254 hosts) |
 
 ---
 
-#### Terminal 3
-
-| VLAN | Network | Description |
-|------|--------|------------|
-| T3_USERS | 10.51.20.0/22 | User outlets |
-| T3_WIFI | 10.51.24.0/21 | Wi-Fi |
-| T3_VOIP | 10.51.32.0/23 | VoIP |
-| T3_SERVERS | 10.51.34.0/25 | Servers |
-
----
-
-#### Terminal 4
-
-| VLAN | Network | Description |
-|------|--------|------------|
-| T4_USERS | 10.51.36.0/22 | User outlets |
-| T4_WIFI | 10.51.40.0/21 | Wi-Fi |
-| T4_VOIP | 10.51.48.0/23 | VoIP |
-| T4_SERVERS | 10.51.50.0/25 | Servers |
-
----
-
-#### Terminal 5
-
-| VLAN | Network | Description |
-|------|--------|------------|
-| T5_USERS | 10.51.52.0/22 | User outlets |
-| T5_WIFI | 10.51.56.0/21 | Wi-Fi |
-| T5_VOIP | 10.51.64.0/23 | VoIP |
-| T5_SERVERS | 10.51.66.0/25 | Servers |
-
----
-
-### Address Blocks per Member
+## Address Blocks per Member
 
 | Member | Terminal | Assigned Block |
 |--------|---------|----------------|
 | Simão Guedes & Martim Penedones | T2 | 10.51.4.0/20 |
-| Rita Oliveira | T3 | 10.51.20.0/20 |
-| Afonso Simões | T4 | 10.51.36.0/20 |
-| Gonçalo Silva | T5 | 10.51.52.0/20 |
+| Rita Oliveira | T3 | 10.51.24.0/20 |
+| Afonso Simões | T4 | 10.51.40.0/20 |
+| Gonçalo Silva | T5 | 10.51.64.0/19 |
 
 ---
 
-## Technical Decisions
+## Technical Decisions Summary
 
-- All inter-switch links use **trunk mode**
-- All VLANs will be propagated to all switches using **VTP**
-- STP remains enabled (default)
-- Router-on-a-stick will be used for inter-VLAN routing
-- Static routing will be used between terminals via the backbone network
-- The first usable IP of each VLAN will be used as the default gateway
+- **Trunking:** All inter-switch links are configured in `switchport mode trunk`.
+- **VTP:** Automatic propagation of the VLAN database for consistency.
+- **Inter-VLAN Routing:** Implemented via Router-on-a-stick (Sub-interfaces on Router 2811).
+- **Static Routing:** Manual routing tables for each terminal's blocks via the Backbone.
+- **Gateways:** The first usable IP of each subnet will be assigned to the Router's sub-interface.
+- **Management:** SSH/HTTP access to switches is restricted to the 10.51.2.0/23 network.
 
 ---
 
-# 3. Subtasks Assignment
-
+# 4. Subtasks Assignment
 Each team member is responsible for developing a complete Layer 2 and Layer 3 network simulation for a specific terminal.
-
 All simulations must include the campus backbone and follow the global planning decisions.
-
 ---
 
 ### Terminal 2 – T.2.1 (Simão Guedes & Martim Penedones)
@@ -226,8 +184,9 @@ All simulations must include the campus backbone and follow the global planning 
 - Integration into **campus.pkt**
 - Rebuilding backbone connections
 - Ensuring consistency across all terminals
-
 ---
+
+
 
 ### Terminal 4 – T.2.4 (Afonso Simões)
 
@@ -240,8 +199,9 @@ All simulations must include the campus backbone and follow the global planning 
 - Router-on-a-stick configuration
 - Static routing
 - End devices configuration
-
 ---
+
+
 
 ### Terminal 5 – T.2.3 (Gonçalo Silva)
 
@@ -256,10 +216,3 @@ All simulations must include the campus backbone and follow the global planning 
 - End devices configuration
 
 ---
-
-## Notes
-
-- All IP ranges are non-overlapping and within the assigned block
-- All VLAN IDs are within the required range (748–768)
-- All switches use the same VTP domain
-- Configurations must be exported regularly
