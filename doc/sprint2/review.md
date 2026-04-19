@@ -25,5 +25,6 @@ There is an issue with the routing tables; some networks are unreachable.
 ## 2.3. 3333333 - Network simulation for for Terminal Z #
 ### Partially implemented with issues. ###
 The VTP domain name in the switch representing the IC is wrong.
-## 2.4. 4444444 - Network simulation for for Terminal T #
-### Totally implemented with no issues. ###
+## 2.4. 1240751 - Network simulation for for Terminal 4 #
+### Totally implemented with just a little issue regarding laptop functionality. ###
+Maybe a bug, I´m not really sure.In the IP Configuration everytime I configure it's IP and put it on static mode after trying to connect to the Access Point it changes automatically back to DHCP mode.
