@@ -77,62 +77,61 @@ All team members will use:
 
 ## Address Space
 - **Total Block:** 10.51.0.0/17 (Range: 10.51.0.0 - 10.51.127.255)
+# 3. IPv4 Addressing Plan
 
-# IP Addressing and VLAN Planning
+## 3.1 Global Networks (Fora dos blocos dos terminais)
+*Estes endereços não podem ser usados dentro dos blocos individuais.*
 
-## 1. Global Networks (Backbone and Management)
-
-| Network | Address/Mask | Description |
-| :--- | :--- | :--- |
-| **Backbone** | 10.51.0.0/24 | Inter-terminal Link (Router IPs: T2: .1, T3: .2, T4: .3, T5: .4) |
-| **DMZ Switches** | 10.51.1.0/24 | Switch Management (Isolated, no routing) |
-
-## 2. Address Blocks per Member (Summary)
-
-| Member | Terminal | Assigned Block | IP Range (3rd Octet) |
+| Network | Address/Mask | Description | Nodes |
 | :--- | :--- | :--- | :--- |
-| Simão G. & Martim P. | Terminal 2 | 10.51.0.0/20 | 10.51.0.0 - 10.51.15.255 |
-| Rita Oliveira | Terminal 3 | 10.51.16.0/20 | 10.51.16.0 - 10.51.31.255 |
-| Afonso Simões | Terminal 4 | 10.51.32.0/20 | 10.51.32.0 - 10.51.47.255 |
+| **Backbone** | 10.51.0.0/24 | Inter-terminal Link | 254 (Req: 190) |
+| **Switches DMZ** | 10.51.2.0/23 | Management (Isolated) | 510 (Req: 410) |
+
+## 3.2 Address Blocks per Member (Summary)
+*Organizado para evitar qualquer overlapping.*
+
+| Member | Terminal | Assigned Block | Range (3rd Octet) |
+| :--- | :--- | :--- | :--- |
+| Simão G. & Martim P. | Terminal 2 | 10.51.16.0/20 | 10.51.16.0 - 10.51.31.255 |
+| Rita Oliveira | Terminal 3 | 10.51.32.0/20 | 10.51.32.0 - 10.51.47.255 |
+| Afonso Simões | Terminal 4 | 10.51.48.0/20 | 10.51.48.0 - 10.51.63.255 |
 | Gonçalo Silva | Terminal 5 | 10.51.64.0/19 | 10.51.64.0 - 10.51.95.255 |
 
 ---
 
-## 3. VLAN Details per Terminal
+## 3.3 VLAN Details per Terminal 
 
-### Terminal 2 (Requirement: ~3600 nodes)
-| VLAN | Network | Mask | Description |
+### Terminal 2
+| VLAN | Network | Mask | Hosts |
 | :--- | :--- | :--- | :--- |
-| T2_VOIP | 10.51.4.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
-| T2_SERVERS | 10.51.6.0/25 | 255.255.255.128 | Local Servers (126 hosts) |
-| T2_USERS | 10.51.8.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
-| T2_WIFI | 10.51.12.0/22 | 255.255.252.0 | Wireless Network (1022 hosts) |
+| T2_WIFI | 10.51.16.0/21 | 255.255.248.0 | 2046 (Req: 2000) |
+| T2_USERS | 10.51.24.0/22 | 255.255.252.0 | 1022 (Req: 1000) |
+| T2_VOIP | 10.51.28.0/23 | 255.255.254.0 | 510 (Req: 500) |
+| T2_SERVERS | 10.51.30.0/25 | 255.255.255.128 | 126 (Req: 100) |
 
-### Terminal 3 - Integrator (Requirement: ~2950 nodes)
-| VLAN | Network | Mask | Description |
+### Terminal 3
+| VLAN | Network | Mask | Hosts |
 | :--- | :--- | :--- | :--- |
-| T3_WIFI | 10.51.16.0/21 | 255.255.248.0 | Wireless Network (2046 hosts) |
-| T3_USERS | 10.51.24.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
-| T3_VOIP | 10.51.28.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
-| T3_SERVERS | 10.51.30.0/24 | 255.255.255.0 | Local Servers (254 hosts) |
+| T3_WIFI | 10.51.32.0/21 | 255.255.248.0 | 2046 (Req: 1500) |
+| T3_USERS | 10.51.40.0/22 | 255.255.252.0 | 1022 (Req: 950) |
+| T3_VOIP | 10.51.44.0/23 | 255.255.254.0 | 510 (Req: 350) |
+| T3_SERVERS | 10.51.46.0/24 | 255.255.255.0 | 254 (Req: 150) |
 
-### Terminal 4 (Requirement: ~3120 nodes)
-| VLAN | Network | Mask | Description |
+### Terminal 4
+| VLAN | Network | Mask | Hosts |
 | :--- | :--- | :--- | :--- |
-| T4_WIFI | 10.51.32.0/21 | 255.255.248.0 | Wireless Network (2046 hosts) |
-| T4_USERS | 10.51.40.0/22 | 255.255.252.0 | User Workstations (1022 hosts) |
-| T4_VOIP | 10.51.44.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
-| T4_SERVERS | 10.51.46.0/25 | 255.255.255.128 | Local Servers (126 hosts) |
+| T4_WIFI | 10.51.48.0/21 | 255.255.248.0 | 2046 (Req: 1800) |
+| T4_USERS | 10.51.56.0/22 | 255.255.252.0 | 1022 (Req: 800) |
+| T4_VOIP | 10.51.60.0/23 | 255.255.254.0 | 510 (Req: 400) |
+| T4_SERVERS | 10.51.62.0/25 | 255.255.255.128 | 126 (Req: 120) |
 
-### Terminal 5 (Requirement: ~6600 nodes)
-| VLAN | Network | Mask | Description |
+### Terminal 5
+| VLAN | Network | Mask | Hosts |
 | :--- | :--- | :--- | :--- |
-| T5_WIFI | 10.51.64.0/20 | 255.255.240.0 | Wireless Network (4094 hosts) |
-| T5_USERS | 10.51.80.0/21 | 255.255.248.0 | User Workstations (2046 hosts) |
-| T5_VOIP | 10.51.88.0/23 | 255.255.254.0 | IP Telephony (510 hosts) |
-| T5_SERVERS | 10.51.90.0/24 | 255.255.255.0 | Local Servers (254 hosts) |
-
----
+| T5_WIFI | 10.51.64.0/20 | 255.255.240.0 | 4094 (Req: 4000) |
+| T5_USERS | 10.51.80.0/21 | 255.255.248.0 | 2046 (Req: 1900) |
+| T5_VOIP | 10.51.88.0/23 | 255.255.254.0 | 510 (Req: 500) |
+| T5_SERVERS | 10.51.90.0/24 | 255.255.255.0 | 254 (Req: 200) |
 
 ## Technical Decisions Summary
 
