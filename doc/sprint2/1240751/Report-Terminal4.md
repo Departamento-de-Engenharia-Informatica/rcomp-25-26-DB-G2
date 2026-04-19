@@ -98,9 +98,9 @@ Switches are connected via trunk, allowing VLANs to span across floors.
 
 Connectivity tests were performed:
 
-- Inter-VLAN communication ✔
-- Same VLAN across floors ✔
-- DMZ isolation ✔
+- Inter-VLAN communication 
+- Same VLAN across floors 
+- DMZ isolation 
 
 ---
 
