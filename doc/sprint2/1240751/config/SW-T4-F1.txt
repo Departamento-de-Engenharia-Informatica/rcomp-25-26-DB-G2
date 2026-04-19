@@ -1,0 +1,172 @@
+hostname SW-T4-F1
+!
+!
+!
+no ip domain-lookup
+!
+vtp domain rc2526dbg2
+vtp mode transparent
+vtp version 2
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan 748
+ name BACKBONE
+!
+vlan 749
+ name SWITCH_DMZ
+!
+vlan 750
+ name T2_USERS
+!
+vlan 751
+ name T2_WIFI
+!
+vlan 752
+ name T2_VOIP
+!
+vlan 753
+ name T2_SERVERS
+!
+vlan 754
+ name T3_USERS
+!
+vlan 755
+ name T3_WIFI
+!
+vlan 756
+ name T3_VOIP
+!
+vlan 757
+ name T3_SERVERS
+!
+vlan 758
+ name T4_USERS
+!
+vlan 759
+ name T4_WIFI
+!
+vlan 760
+ name T4_VOIP
+!
+vlan 761
+ name T4_SERVERS
+!
+vlan 762
+ name T5_USERS
+!
+vlan 763
+ name T5_WIFI
+!
+vlan 764
+ name T5_VOIP
+!
+vlan 765
+ name T5_SERVERS
+!
+interface FastEthernet0/1
+ description TRUNK_TO_R-T4
+ switchport trunk native vlan 749
+ switchport trunk allowed vlan 748-765
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ description TRUNK_TO_T4_OTHER_SWITCH
+ switchport trunk native vlan 749
+ switchport trunk allowed vlan 748-765
+ switchport mode trunk
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+ description PC-T4-USER
+ switchport access vlan 758
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description PC-T4-SWDMZ
+ switchport access vlan 749
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description AP-T4
+ switchport access vlan 759
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ description SRV-T4
+ switchport access vlan 761
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ description IPPHONE-T4
+ switchport mode access
+ switchport voice vlan 760
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan749
+ ip address 10.51.1.30 255.255.254.0
+!
+ip default-gateway 10.51.1.1
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
