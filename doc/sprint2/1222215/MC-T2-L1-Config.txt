@@ -1,0 +1,86 @@
+show running-config
+Building configuration...
+
+Current configuration : 1288 bytes
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+ptp clock transparent domain 0 profile default
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface GigabitEthernet0/1
+ switchport access vlan 753
+ switchport mode access
+!
+interface GigabitEthernet1/1
+ switchport access vlan 751
+ switchport mode access
+!
+interface GigabitEthernet2/1
+ switchport access vlan 749
+ switchport mode access
+!
+interface GigabitEthernet3/1
+ switchport access vlan 750
+ switchport mode access
+!
+interface GigabitEthernet4/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface GigabitEthernet5/1
+ switchport access vlan 756
+ switchport mode access
+!
+interface FastEthernet6/1
+ switchport mode trunk
+!
+interface FastEthernet7/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface FastEthernet8/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface FastEthernet9/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan479
+ no ip address
+ shutdown
+!
+interface Vlan749
+ ip address 10.51.2.1 255.255.254.0
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
