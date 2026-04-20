@@ -18,3 +18,84 @@ ip cef
 no ipv6 cef
 !
 !
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017EEFG-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description LIGACAO_AO_BACKBONE
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface FastEthernet0/1
+ description LIGACAO_AO_SWITCH_CORE_T5
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.749
+ encapsulation dot1Q 749
+ ip address 10.51.2.1 255.255.255.0
+!
+interface FastEthernet0/1.762
+ encapsulation dot1Q 762
+ ip address 10.51.16.1 255.255.240.0
+!
+interface FastEthernet0/1.763
+ encapsulation dot1Q 763
+ ip address 10.51.32.1 255.255.240.0
+!
+interface FastEthernet0/1.764
+ encapsulation dot1Q 764
+ ip address 10.51.48.1 255.255.240.0
+!
+interface FastEthernet0/1.765
+ encapsulation dot1Q 765
+ ip address 10.51.64.1 255.255.240.0
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.51.0.2
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
