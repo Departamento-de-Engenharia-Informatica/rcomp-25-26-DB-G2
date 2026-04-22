@@ -1,11 +1,11 @@
-Current configuration : 1591 bytes
+Current configuration : 1442 bytes
 !
 version 15.0
 no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
 !
-hostname SW-T5-CORE
+hostname HC2
 !
 !
 !
@@ -16,16 +16,14 @@ spanning-tree mode pvst
 spanning-tree extend system-id
 !
 interface FastEthernet0/1
- description TRUNK_PARA_O_ROUTER
+ description LIGACAO_AO_IC
  switchport mode trunk
 !
 interface FastEthernet0/2
- description LIGACAO_PC_TESTE
- switchport mode access
+ shutdown
 !
 interface FastEthernet0/3
- description LIGACAO_SERVIDOR
- switchport mode access
+ shutdown
 !
 interface FastEthernet0/4
  description LIGACAO_TELEFONE_VOIP
@@ -34,8 +32,7 @@ interface FastEthernet0/4
  switchport voice vlan 764
 !
 interface FastEthernet0/5
- description LIGACAO_ACCESS_POINT
- switchport mode access
+ shutdown
 !
 interface FastEthernet0/6
  description LIGACAO_PC_GESTAO
@@ -87,9 +84,9 @@ interface Vlan1
  shutdown
 !
 interface Vlan749
- ip address 10.51.2.42 255.255.255.0
+ ip address 10.51.2.43 255.255.255.0
 !
-ip default-gateway 10.51.0.1
+ip default-gateway 10.51.2.1
 !
 !
 !
