@@ -79,8 +79,7 @@ All team members will use:
 - **Total Block:** 10.51.0.0/17 (Range: 10.51.0.0 - 10.51.127.255)
 # 3. IPv4 Addressing Plan
 
-## 3.1 Global Networks (Fora dos blocos dos terminais)
-*Estes endereços não podem ser usados dentro dos blocos individuais.*
+## 3.1 Global Networks 
 
 | Network | Address/Mask | Description | Nodes |
 | :--- | :--- | :--- | :--- |
@@ -88,7 +87,6 @@ All team members will use:
 | **Switches DMZ** | 10.51.2.0/23 | Management (Isolated) | 510 (Req: 410) |
 
 ## 3.2 Address Blocks per Member (Summary)
-*Organizado para evitar qualquer overlapping.*
 
 | Member | Terminal | Assigned Block | Range (3rd Octet) |
 | :--- | :--- | :--- | :--- |
@@ -96,6 +94,29 @@ All team members will use:
 | Rita Oliveira | Terminal 3 | 10.51.32.0/20 | 10.51.32.0 - 10.51.47.255 |
 | Afonso Simões | Terminal 4 | 10.51.48.0/20 | 10.51.48.0 - 10.51.63.255 |
 | Gonçalo Silva | Terminal 5 | 10.51.64.0/19 | 10.51.64.0 - 10.51.95.255 |
+
+
+
+### Table 1: VLAN 748 - Backbone (Inter-Router Connectivity)
+**Network:** 10.51.0.0/24 | **Purpose:** Traffic transit between Terminals.
+
+| Terminal | Router Interface IP | 
+| :--- | :--- | :--- |
+| Terminal 2 | 10.51.0.2 | 
+| Terminal 3 | 10.51.0.3 |
+| Terminal 4 | 10.51.0.1 | 
+| Terminal 5 | 10.51.0.5 | 
+
+
+### Table 2: VLAN 749 - Management (Switches DMZ)
+**Network:** 10.51.2.0/23 | **Purpose:** Remote access and monitoring of network devices.
+
+| Terminal | Router Gateway IP | Switch IP Range |
+| :--- | :--- | :--- |
+| Terminal 2 | 10.51.2.2 | 10.51.2.10 - 10.51.2.19 |
+| Terminal 3 | 10.51.2.1 | 10.51.2.20 - 10.51.2.29 |
+| Terminal 4 | 10.51.2.4 | 10.51.2.30 - 10.51.2.39 |
+| Terminal 5 | 10.51.2.5 | 10.51.2.40 - 10.51.2.49 |
 
 ---
 
