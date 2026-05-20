@@ -10,7 +10,7 @@ The owner of this folder will commit here all the outcomes (results/artifacts/pr
 
 # 1. Introduction
 
-This report describes the implementation of **Sprint 3** of the RCOMP project for **Terminal 5** (Group cc-gn), focusing on the migration from static routing to **OSPF dynamic routing**, and the integration of additional network services including **DHCPv4, DNS, VoIP, and HTTP/HTTPS**.
+This report describes the implementation of **Sprint 3** of the RCOMP project for **Terminal 5** (Group cc-gn), focusing on the migration from static routing to **OSPF dynamic routing**, and the integration of additional network services including **DHCPv4, DNS, VoIP, HTTP/HTTPS, NAT, and ACL-based firewall policies**.
 
 The configuration was implemented and tested using Cisco Packet Tracer.
 
@@ -42,6 +42,14 @@ Based on the network addressing and sub-interfaces implemented:
 | T5_WIFI (763) | 10.51.32.0/20 | Wireless clients |
 | T5_VOIP (764) | 10.51.48.0/20 | IP telephony |
 | T5_SERVERS (765)| 10.51.64.0/20 | Internal servers / DMZ |
+
+---
+
+## 2.3 Backbone and Management
+
+| VLAN | Network | Purpose |
+|------|--------|--------|
+| Backbone | 10.51.0.0/24 | Inter-terminal routing |
 | Management (749) | 10.51.2.0/24 | Device management |
 
 ---
@@ -94,9 +102,20 @@ Server IP address:
 10.51.64.2
 ```
 
-## 5.1 Service Status & DNS Records
+## 5.1 Service Status
 
 The HTTP, HTTPS, and DNS services were enabled and verified.
+
+| Service | Status |
+|---|---|
+| HTTP | Enabled |
+| HTTPS | Enabled |
+| DNS | Enabled |
+
+---
+
+# 6. DNS Configuration
+
 Local DNS domain: `terminal-5.rcomp-25-26-cc-gn`
 
 Configured resource records:
@@ -110,11 +129,21 @@ Configured resource records:
 
 ---
 
-# 6. VoIP Service
+# 7. VoIP Service
 
-Cisco IP telephony endpoints were provisioned in VLAN 764. The Cisco Call Manager Express (CME) on Router T5 was configured with strict MAC address authentication. Unlisted MAC addresses are actively rejected by the router to prevent registration loops.
+Cisco IP telephony endpoints were provisioned in VLAN 764. The Cisco Call Manager Express (CME) on Router T5 was configured with strict MAC address authentication to prevent registration loops.
 
-## 6.1 Authorized IP Phones
+Telephony service configuration:
+
+```bash
+telephony-service
+ max-ephones 2
+ max-dn 2
+ ip source-address 10.51.48.1 port 2000
+ auto assign 1 to 2
+```
+
+## 7.1 Authorized IP Phones
 
 | Phone | MAC Address | Status |
 |---|---|---|
@@ -131,7 +160,42 @@ ephone 2
 
 ---
 
-# 7. Conclusion
+# 8. NAT Configuration
+
+Static Network Address Translation (NAT) maps cross-terminal inbound web requests hitting the public backbone address straight into the private server resource in the DMZ.
+
+```bash
+ip nat inside source static tcp 10.51.64.2 80 10.51.0.5 80
+ip nat inside source static tcp 10.51.64.2 443 10.51.0.5 443
+```
+
+---
+
+# 9. ACL / Firewall Rules
+
+A stateless Access Control List (ACL 100) secures the boundary interface connecting to the Backbone. Policies enforce strict transit parameters for the DMZ services:
+
+- Allow bidirectional ICMP queries.
+- Allow public inbound TCP traffic targeting web endpoints (80, 443).
+- Allow target UDP/TCP name queries (port 53).
+- Permit OSPF routing link-state packets.
+- Block internal subnet spoofing vectors.
+
+```bash
+access-list 100 permit icmp any any
+access-list 100 permit tcp any host 10.51.64.2 eq 80
+access-list 100 permit tcp any host 10.51.64.2 eq 443
+access-list 100 permit udp any host 10.51.64.2 eq 53
+access-list 100 permit tcp any host 10.51.64.2 eq 53
+access-list 100 permit ospf any any
+access-list 100 deny ip 10.51.64.0 0.0.15.255 any
+access-list 100 deny ip any 10.51.64.0 0.0.15.255
+access-list 100 permit ip any any
+```
+
+---
+
+# 10. Conclusion
 
 Sprint 3 successfully expanded the network infrastructure of Terminal 5.
 
@@ -140,5 +204,6 @@ The implemented solution integrates:
 - **DHCPv4 & DNS** infrastructure resolving local names and domains perfectly.
 - **HTTP/HTTPS** web availability matching required visibility guidelines.
 - **VoIP** telephony infrastructure authenticated via static device mapping.
+- **NAT & ACL-based firewalling** security layers shielding the deployment core.
 
 All services and the Host/DNS resolution pipeline were fully tested, verified, and are operational in Cisco Packet Tracer.

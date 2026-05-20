@@ -1,4 +1,4 @@
-# COMP 2025-2026 Project 1 - Sprint 3 planning
+# RCOMP 2025-2026 Project 1 - Sprint 3 planning
 
 ### Sprint master: 1211920 ###
 
@@ -24,7 +24,7 @@ Each team member updates the Packet Tracer simulation for the same terminal as i
 |---------|------------------|-----------|
 | T.3.1 | Terminal 2 — OSPF, DHCPv4, DNS, VoIP, HTTP/HTTPS, NAT, ACL; internet/default route | 1222215 & 1211369 |
 | T.3.2 | Terminal 3 — OSPF, DHCPv4, DNS, VoIP, HTTP/HTTPS, NAT, ACL; **campus.pkt** integration | 1240729 |
-| T.3.3 | Terminal 5 — OSPF, DHCPv4, DNS, VoIP, HTTP/HTTPS | 1211920 |
+| T.3.3 | Terminal 5 — OSPF, DHCPv4, DNS, VoIP, HTTP/HTTPS, NAT, ACL | 1211920 |
 | T.3.4 | Terminal 4 — OSPF, DHCPv4, DNS, VoIP, HTTP/HTTPS, NAT, ACL | 1240751 |
 
 ---
@@ -47,7 +47,7 @@ Decisions below carry over from Sprint 2 unless noted. All members use **Cisco P
 
 ## Layer 2 (unchanged from Sprint 2)
 
-- **VTP domain:** `rc2526dbg2`
+- **VTP domain:** `rc2526ccgn`
 - **VTP mode:** backbone/core switches → Server; other switches → Client
 - **Trunking:** all inter-switch and switch–router links in trunk mode
 - **Native VLAN:** 749 (SWITCH_DMZ)
@@ -100,11 +100,11 @@ router ospf 1
 
 | Level | Domain |
 |-------|--------|
-| Team root | `rcomp-25-26-db-g2` |
-| Terminal 2 | `terminal-2.rcomp-25-26-db-g2` |
-| Terminal 3 | `terminal-3.rcomp-25-26-db-g2` |
-| Terminal 4 | `terminal-4.rcomp-25-26-db-g2` |
-| Terminal 5 | `terminal-5.rcomp-25-26-db-g2` |
+| Team root | `rcomp-25-26-cc-gn` |
+| Terminal 2 | `terminal-2.rcomp-25-26-cc-gn` |
+| Terminal 3 | `terminal-3.rcomp-25-26-cc-gn` |
+| Terminal 4 | `terminal-4.rcomp-25-26-cc-gn` |
+| Terminal 5 | `terminal-5.rcomp-25-26-cc-gn` |
 
 Each terminal deploys an authoritative DNS server in its **servers/DMZ** VLAN. Minimum records per terminal:
 
@@ -125,7 +125,7 @@ Each terminal deploys an authoritative DNS server in its **servers/DMZ** VLAN. M
 | Terminal 2 | 10.51.30.10 | T2_SERVERS `10.51.30.0/25` |
 | Terminal 3 | 10.51.46.10 | T3_SERVERS `10.51.46.0/24` |
 | Terminal 4 | 10.51.62.10 | T4_SERVERS `10.51.62.0/25` |
-| Terminal 5 | 10.51.90.10 | T5_SERVERS `10.51.90.0/24` |
+| Terminal 5 | 10.51.64.2 | T5_SERVERS `10.51.64.0/20` |
 
 DHCP pools must point clients to the corresponding DNS server address above.
 
@@ -140,7 +140,7 @@ CME runs on each terminal router. Extension numbers use the terminal digit as pr
 | Terminal 2 | 752 (T2_VOIP) | 10.51.28.1 | 2001–2010 |
 | Terminal 3 | 756 (T3_VOIP) | 10.51.44.1 | 3001–3010 |
 | Terminal 4 | 760 (T4_VOIP) | 10.51.60.1 | 4001–4002 |
-| Terminal 5 | 764 (T5_VOIP) | 10.51.88.1 | 5001–5010 |
+| Terminal 5 | 764 (T5_VOIP) | 10.51.48.1 | 5001–5010 |
 
 - Phone model: **Cisco 7960**
 - VoIP DHCP pool: `option 150` → router VoIP address (TFTP/CME)
@@ -176,7 +176,7 @@ Provided by each terminal router for **Users**, **Wi-Fi**, and **VoIP** VLANs on
 | Terminal 2 | 10.51.0.2 : 80 / 443 | 10.51.30.10 | HTTP, HTTPS |
 | Terminal 3 | 10.51.0.3 : 80 / 443 | 10.51.46.10 | HTTP, HTTPS |
 | Terminal 4 | 10.51.0.1 : 80 / 443 | 10.51.62.10 | HTTP, HTTPS |
-| Terminal 5 | 10.51.0.5 : 80 / 443 | 10.51.90.10 | HTTP, HTTPS |
+| Terminal 5 | 10.51.0.5 : 80 / 443 | 10.51.64.2 | HTTP, HTTPS |
 
 Example (Terminal 4):
 
@@ -229,7 +229,7 @@ All Sprint 3 services use the networks defined in `doc/sprint2/planning.md`:
 
 - Static routing replaced by **OSPF** (Area 0 + per-terminal area)
 - **DHCPv4** on user-facing VLANs; static config only for backbone, Switches DMZ, and infrastructure
-- **Hierarchical DNS** under `rcomp-25-26-db-g2`
+- **Hierarchical DNS** under `rcomp-25-26-cc-gn`
 - **CME VoIP** with terminal-specific extension prefixes
 - **HTTP/HTTPS** in servers VLAN; published via **static NAT** on backbone IP
 - **ACL 100** (or equivalent) on backbone interface for basic firewalling
@@ -255,7 +255,7 @@ All Sprint 3 services use the networks defined in `doc/sprint2/planning.md`:
 
 - OSPF Area 0 + Area 3 (`router-id 3.3.3.3`)
 - DHCPv4 for T3_USERS, T3_WIFI, T3_VOIP
-- DNS server at 10.51.46.10 (`terminal-3.rcomp-25-26-db-g2`)
+- DNS server at 10.51.46.10 (`terminal-3.rcomp-25-26-cc-gn`)
 - HTTP/HTTPS on DMZ server
 - VoIP: CME, extension 3001 (and additional phones as needed)
 - Static NAT: 10.51.0.3 → 10.51.46.10 (ports 80/443)
@@ -273,7 +273,7 @@ All Sprint 3 services use the networks defined in `doc/sprint2/planning.md`:
 
 - OSPF Area 0 + Area 4 (`router-id 4.4.4.4`)
 - DHCPv4 for T4_USERS, T4_WIFI, T4_VOIP
-- DNS/HTTP/HTTPS server at 10.51.62.10 (`terminal-4.rcomp-25-26-db-g2`)
+- DNS/HTTP/HTTPS server at 10.51.62.10 (`terminal-4.rcomp-25-26-cc-gn`)
 - VoIP: extensions 4001, 4002
 - Static NAT: 10.51.0.1 → 10.51.62.10 (ports 80/443)
 - ACL on backbone interface
@@ -283,18 +283,18 @@ All Sprint 3 services use the networks defined in `doc/sprint2/planning.md`:
 ### Terminal 5 – T.3.3 (1211920 — Gonçalo Silva)
 
 - OSPF Area 0 + Area 5 (`router-id 5.5.5.5`)
-- OSPF may be enabled per sub-interface if needed for Packet Tracer stability
+- OSPF configured directly via sub-interfaces for Packet Tracer stability
 - DHCPv4 for T5_USERS, T5_WIFI, T5_VOIP
-- DNS/HTTP/HTTPS server at 10.51.90.10 (`terminal-5.rcomp-25-26-db-g2`)
-- VoIP: CME with MAC-based `ephone` authorization
-- Static NAT: 10.51.0.5 → 10.51.90.10 (ports 80/443)
-- ACL on backbone interface (if required by implementation)
+- DNS/HTTP/HTTPS server at 10.51.64.2 (`terminal-5.rcomp-25-26-cc-gn`)
+- VoIP: CME with strict MAC-based `ephone` authorization
+- Static NAT: 10.51.0.5 → 10.51.64.2 (ports 80/443)
+- ACL on backbone interface
 
 ---
 
 ## Notes
 
 - Sprint 3 builds on Sprint 2 topologies; do not change VLAN IDs or team address plan without team agreement.
-- DNS domain in member reports must match **`rcomp-25-26-db-g2`** (not alternate suffixes).
+- DNS domain in member reports must match **`rcomp-25-26-cc-gn`** (not alternate suffixes).
 - Terminal 2 is the only terminal with internet; coordinate default-route propagation with the team.
 - Commit `TerminalN.pkt`, configuration dumps, and sprint report/README per member folder.
