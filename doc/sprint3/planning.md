@@ -1,6 +1,6 @@
 # RCOMP 2025-2026 Project 1 - Sprint 3 planning
 
-### Sprint master: 1211920 ###
+### Sprint master: 1240751  ###
 
 (This file is to be created/edited by the sprint master only)
 
