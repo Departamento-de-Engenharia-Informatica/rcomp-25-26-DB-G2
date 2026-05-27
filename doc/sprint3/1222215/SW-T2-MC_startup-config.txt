@@ -1,0 +1,85 @@
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+ip dhcp excluded-address 10.51.24.1 10.51.24.25
+ip dhcp excluded-address 10.51.16.1 10.51.16.25
+ip dhcp excluded-address 10.51.28.1 10.51.28.25
+!
+ip dhcp pool T2_USERS
+ network 10.51.24.0 255.255.252.0
+ default-router 10.51.24.1
+ dns-server 10.51.30.10
+ip dhcp pool T2_WIFI
+ network 10.51.16.0 255.255.248.0
+ default-router 10.51.16.1
+ dns-server 10.51.30.10
+ip dhcp pool T2_VOIP
+ network 10.51.28.0 255.255.254.0
+ default-router 10.51.28.1
+ option 150 ip 10.51.28.1
+ dns-server 10.51.30.10
+ptp clock transparent domain 0 profile default
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface GigabitEthernet0/1
+ switchport access vlan 753
+!
+interface GigabitEthernet1/1
+ switchport access vlan 751
+!
+interface GigabitEthernet2/1
+!
+interface GigabitEthernet3/1
+ switchport access vlan 750
+!
+interface GigabitEthernet4/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface GigabitEthernet5/1
+ switchport mode access
+ switchport voice vlan 752
+!
+interface FastEthernet6/1
+ switchport trunk native vlan 749
+ switchport mode trunk
+!
+interface FastEthernet7/1
+!
+interface GigabitEthernet8/1
+ switchport mode access
+ switchport voice vlan 752
+!
+interface GigabitEthernet9/1
+ switchport access vlan 753
+ switchport mode access
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+

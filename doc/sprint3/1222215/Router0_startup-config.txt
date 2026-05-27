@@ -1,0 +1,201 @@
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R-T2
+!
+!
+!
+!
+ip dhcp excluded-address 10.51.24.1 10.51.24.25
+ip dhcp excluded-address 10.51.16.1 10.51.16.25
+ip dhcp excluded-address 10.51.28.1 10.51.28.25
+!
+ip dhcp pool T2_USERS
+ network 10.51.24.0 255.255.252.0
+ default-router 10.51.24.1
+ dns-server 10.51.30.10
+ domain-name terminal-2.rcomp-25-26-cc-gn
+ip dhcp pool T2_WIFI
+ network 10.51.16.0 255.255.248.0
+ default-router 10.51.16.1
+ dns-server 10.51.30.10
+ domain-name terminal-2.rcomp-25-26-cc-gn
+ip dhcp pool T2_VOIP
+ network 10.51.28.0 255.255.254.0
+ default-router 10.51.28.1
+ option 150 ip 10.51.28.1
+ dns-server 10.51.30.10
+ domain-name terminal-2.rcomp-25-26-cc-gn
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017S86I-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0.748
+ encapsulation dot1Q 748
+ ip address 10.51.0.2 255.255.255.0
+ ip nat outside
+ ip access-group BACKBONE_IN in
+!
+interface FastEthernet0/0.750
+ encapsulation dot1Q 750
+ ip address 10.51.24.1 255.255.252.0
+ ip access-group INTERNAL_IN in
+!
+interface FastEthernet0/0.751
+ encapsulation dot1Q 751
+ ip address 10.51.16.1 255.255.248.0
+ ip access-group INTERNAL_IN in
+!
+interface FastEthernet0/0.752
+ encapsulation dot1Q 752
+ ip address 10.51.28.1 255.255.254.0
+ ip access-group INTERNAL_IN in
+!
+interface FastEthernet0/0.753
+ encapsulation dot1Q 753
+ ip address 10.51.30.1 255.255.255.128
+ ip nat inside
+!
+interface FastEthernet0/1
+ ip address 89.73.67.34 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 10.51.0.0 0.0.0.255 area 0
+ network 10.51.2.0 0.0.1.255 area 2
+ network 10.51.16.0 0.0.7.255 area 2
+ network 10.51.24.0 0.0.3.255 area 2
+ network 10.51.28.0 0.0.1.255 area 2
+ network 10.51.30.0 0.0.0.127 area 2
+ default-information originate
+!
+ip nat inside source static tcp 10.51.30.10 80 10.51.0.2 80 
+ip nat inside source static tcp 10.51.30.10 443 10.51.0.2 443 
+ip classless
+ip route 0.0.0.0 0.0.0.0 89.73.67.33 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended BACKBONE_IN
+ deny ip 10.51.0.0 0.0.127.255 any
+ permit icmp any any echo
+ permit icmp any any echo-reply
+ permit tcp any host 10.51.0.2 eq www
+ permit tcp any host 10.51.0.2 eq 443
+ permit ospf any any
+ deny ip any host 10.51.0.2
+ deny ip any 10.51.30.0 0.0.0.127
+ permit ip any any
+ip access-list extended INTERNAL_IN
+ permit icmp any any echo
+ permit icmp any any echo-reply
+ permit udp any host 10.51.30.10 eq domain
+ permit tcp any host 10.51.30.10 eq domain
+ permit tcp any host 10.51.30.10 eq www
+ permit tcp any host 10.51.30.10 eq 443
+ permit tcp any host 10.51.30.11 eq www
+ permit tcp any host 10.51.30.11 eq 443
+ deny ip any 10.51.30.0 0.0.0.127
+ permit udp any any eq bootps
+ permit udp any any eq bootpc
+ permit udp any any eq tftp
+ permit tcp any any eq 2000
+ permit ospf any any
+ deny ip any host 10.51.16.1
+ deny ip any host 10.51.24.1
+ deny ip any host 10.51.28.1
+ deny ip any host 10.51.30.1
+ permit ip any any
+!
+!
+!
+!
+!
+dial-peer voice 3 voip
+ destination-pattern 3...
+ session target ipv4:10.51.0.3
+!
+dial-peer voice 4 voip
+ destination-pattern 4...
+ session target ipv4:10.51.0.4
+!
+dial-peer voice 5 voip
+ destination-pattern 5...
+ session target ipv4:10.51.0.5
+!
+telephony-service
+ max-ephones 10
+ max-dn 10
+ ip source-address 10.51.28.1 port 2000
+ auto assign 1 to 10
+!
+ephone-dn 1
+ number 2001
+!
+ephone-dn 2
+ number 2002
+!
+ephone 1
+ device-security-mode none
+ mac-address 000B.BE2E.3B90
+ type 7960
+ button 1:2
+!
+ephone 2
+ device-security-mode none
+ mac-address 000A.41D0.B95B
+ type 7960
+ button 1:1
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
